@@ -3,210 +3,228 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ENRUTA</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>ENRUTA | Entregas que te mueven</title>
+
+  <link rel="icon" href="assets/icons/icono-enruta.png" />
+  <link rel="stylesheet" href="enruta.css" />
+  <script src="enruta.js" defer></script>
 </head>
+
 <body>
 
-<div class="phone">
+  <main class="app">
 
-  <!-- PORTADA -->
-  <section class="screen splash active" id="splash">
-    <div class="status">9:41 <span>▰ WiFi 🔋</span></div>
-    <div class="splash-content">
-      <h1>EN<span>RUTA</span></h1>
-      <p>Entregas en moto,<br>más rápidas y <b>a tu precio.</b></p>
-      <div class="loader"><i></i></div>
-      <small>Cargando...</small>
-    </div>
-  </section>
+    <!-- SPLASH / PORTADA -->
+    <section class="screen active" id="screenSplash">
+      <div class="splash">
+        <img src="assets/images/splash-enruta.png" alt="ENRUTA portada" class="splash-img">
 
-  <!-- SELECCION -->
-  <section class="screen" id="selectRole">
-    <div class="status">9:41 <span>▰ WiFi 🔋</span></div>
-    <div class="brand">EN<span>RUTA</span></div>
-    <h2>¿Cómo quieres continuar?</h2>
-    <p class="sub">Selecciona el tipo de cuenta que deseas usar</p>
+        <div class="splash-actions">
+          <button class="btn primary" onclick="showScreen('screenClienteRegistro')">
+            <img src="assets/icons/usuario.svg" alt="">
+            Soy Cliente
+          </button>
 
-    <button class="role-card" onclick="chooseRole('usuario')">
-      <div class="icon">👤</div>
-      <div><b>Soy usuario</b><small>Quiero solicitar entregas</small></div>
-    </button>
+          <button class="btn outline" onclick="showScreen('screenRepartidorRegistro')">
+            <img src="assets/icons/moto.svg" alt="">
+            Soy Repartidor
+          </button>
 
-    <button class="role-card" onclick="chooseRole('repartidor')">
-      <div class="icon">🏍️</div>
-      <div><b>Soy repartidor</b><small>Quiero hacer entregas</small></div>
-    </button>
+          <p>¿Ya tienes cuenta? <span onclick="showScreen('screenClientePedido')">Iniciar sesión</span></p>
+        </div>
+      </div>
+    </section>
 
-    <p class="login-text">¿Ya tienes cuenta? <span onclick="go('login')">Iniciar sesión</span></p>
-  </section>
+    <!-- REGISTRO CLIENTE -->
+    <section class="screen" id="screenClienteRegistro">
+      <header class="topbar">
+        <button onclick="showScreen('screenSplash')">←</button>
+        <h2>Registro Cliente</h2>
+      </header>
 
-  <!-- REGISTRO USUARIO -->
-  <section class="screen" id="registerUser">
-    <div class="top"><button onclick="go('selectRole')">‹</button><h3>Registro de usuario</h3></div>
-    <form onsubmit="saveUser(event)">
-      <label>Nombre completo</label>
-      <input id="uName" required placeholder="Ej. Anthony Jara">
-      <label>Correo electrónico</label>
-      <input id="uEmail" type="email" required placeholder="correo@gmail.com">
-      <label>Número de celular</label>
-      <input id="uPhone" required placeholder="987 654 321">
-      <label>Contraseña</label>
-      <input id="uPass" type="password" required placeholder="••••••••">
-      <button class="btn">Registrarme</button>
-    </form>
-    <p class="login-text">¿Ya tienes cuenta? <span onclick="go('login')">Iniciar sesión</span></p>
-  </section>
+      <div class="card">
+        <img src="assets/images/registro-cliente.png" class="preview-img" alt="Registro cliente">
+      </div>
 
-  <!-- REGISTRO REPARTIDOR 1 -->
-  <section class="screen" id="driver1">
-    <div class="top"><button onclick="go('selectRole')">‹</button><h3>Registro de repartidor</h3></div>
-    <p class="step">Paso 1 de 4</p><div class="progress"><i style="width:25%"></i></div>
-    <label>Nombre completo</label><input id="dName" required placeholder="Ej. Carlos Gómez">
-    <label>Correo electrónico</label><input id="dEmail" type="email" required placeholder="correo@gmail.com">
-    <label>Número de celular</label><input id="dPhone" required placeholder="912 345 678">
-    <label>Contraseña</label><input id="dPass" type="password" required placeholder="••••••••">
-    <button class="btn" onclick="go('driver2')">Continuar</button>
-  </section>
+      <form class="form" onsubmit="event.preventDefault(); showScreen('screenClientePedido')">
+        <label>Nombres completos</label>
+        <input type="text" placeholder="Ej. Luis Alberto" required>
 
-  <!-- REGISTRO REPARTIDOR 2 -->
-  <section class="screen" id="driver2">
-    <div class="top"><button onclick="go('driver1')">‹</button><h3>Registro de repartidor</h3></div>
-    <p class="step">Paso 2 de 4</p><div class="progress"><i style="width:50%"></i></div>
-    <h3>Documentos personales</h3>
-    <label class="upload">📄 DNI <input id="dni" type="file" accept="image/*,.pdf" onchange="uploaded(this)"><span>Subir foto</span></label>
-    <label class="upload">🪪 Licencia de conducir <input id="licencia" type="file" accept="image/*,.pdf" onchange="uploaded(this)"><span>Subir foto</span></label>
-    <label class="upload">🛡️ SOAT vigente <input id="soat" type="file" accept="image/*,.pdf" onchange="uploaded(this)"><span>Subir foto</span></label>
-    <button class="btn" onclick="go('driver3')">Continuar</button>
-  </section>
+        <label>DNI</label>
+        <input type="text" placeholder="Ej. 76543210" required>
 
-  <!-- REGISTRO REPARTIDOR 3 -->
-  <section class="screen" id="driver3">
-    <div class="top"><button onclick="go('driver2')">‹</button><h3>Registro de repartidor</h3></div>
-    <p class="step">Paso 3 de 4</p><div class="progress"><i style="width:75%"></i></div>
-    <h3>Información de la moto</h3>
-    <label>Marca y modelo</label><input id="motoModel" placeholder="Honda XR190L">
-    <label>Año</label><input id="motoYear" placeholder="2022">
-    <label>Placa</label><input id="motoPlate" placeholder="ABC-123">
-    <label class="upload photo">📷 Foto de la moto <input id="motoPhoto" type="file" accept="image/*" onchange="uploaded(this)"><span>Subir foto</span></label>
-    <button class="btn" onclick="go('driver4')">Continuar</button>
-  </section>
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="ejemplo@correo.com" required>
 
-  <!-- REGISTRO REPARTIDOR 4 -->
-  <section class="screen" id="driver4">
-    <div class="top"><button onclick="go('driver3')">‹</button><h3>Registro de repartidor</h3></div>
-    <p class="step">Paso 4 de 4</p><div class="progress"><i style="width:100%"></i></div>
-    <div class="success">✓</div>
-    <h2>Verificación en proceso</h2>
-    <p class="sub">Revisaremos tus documentos. Tiempo estimado: 24 a 48 horas.</p>
-    <button class="btn" onclick="saveDriver()">Enviar registro</button>
-  </section>
+        <label>Celular</label>
+        <input type="tel" placeholder="987 654 321" required>
 
-  <!-- LOGIN -->
-  <section class="screen" id="login">
-    <div class="brand">EN<span>RUTA</span></div>
-    <h2>Iniciar sesión</h2>
-    <div class="switch">
-      <button class="active" onclick="loginRole='usuario';setSwitch(this)">Usuario</button>
-      <button onclick="loginRole='repartidor';setSwitch(this)">Repartidor</button>
-    </div>
-    <label>Correo o celular</label><input id="loginUser" placeholder="correo o celular">
-    <label>Contraseña</label><input id="loginPass" type="password" placeholder="••••••••">
-    <button class="btn" onclick="login()">Iniciar sesión</button>
-    <p class="login-text">¿No tienes cuenta? <span onclick="go('selectRole')">Regístrate</span></p>
-  </section>
+        <button class="btn primary">Continuar</button>
+      </form>
+    </section>
 
-  <!-- HOME USUARIO -->
-  <section class="screen appscreen" id="userHome">
-    <div class="header"><div class="brand smallbrand">EN<span>RUTA</span></div><span>🔔</span></div>
-    <h2>Publica tu ruta</h2>
-    <input id="pickup" placeholder="Punto de recojo">
-    <input id="dropoff" placeholder="Punto de entrega">
-    <textarea id="packageDesc" placeholder="Describe el paquete"></textarea>
-    <input id="price" type="number" placeholder="Precio propuesto S/">
-    <button class="btn" onclick="publishRoute()">Rutear</button>
+    <!-- REGISTRO REPARTIDOR -->
+    <section class="screen" id="screenRepartidorRegistro">
+      <header class="topbar">
+        <button onclick="showScreen('screenSplash')">←</button>
+        <h2>Registro Repartidor</h2>
+      </header>
 
-    <h3>Mis rutas publicadas</h3>
-    <div id="myRoutes"></div>
-    <nav><button class="active">Publicar</button><button onclick="go('profile')">Perfil</button></nav>
-  </section>
+      <div class="card">
+        <img src="assets/images/registro-repartidor.png" class="preview-img" alt="Registro repartidor">
+      </div>
 
-  <!-- OFERTAS USUARIO -->
-  <section class="screen appscreen" id="offers">
-    <div class="top"><button onclick="go('userHome')">‹</button><h3>Ofertas recibidas</h3></div>
-    <div id="offersList"></div>
-  </section>
+      <form class="form" onsubmit="event.preventDefault(); showScreen('screenListaPedidos')">
+        <label>Nombres completos</label>
+        <input type="text" placeholder="Ej. Carlos Ramírez" required>
 
-  <!-- HOME REPARTIDOR -->
-  <section class="screen appscreen" id="driverHome">
-    <div class="header"><div class="brand smallbrand">EN<span>RUTA</span></div><span>🔔</span></div>
-    <h2>Rutas disponibles</h2>
-    <p class="sub">Elige la ruta que más te convenga</p>
-    <div class="tabs"><button class="active">Todas</button><button>Cercanas</button><button>Nuevas</button></div>
-    <div id="routesList"></div>
-    <nav><button class="active">Rutas</button><button onclick="go('myOffers')">Mis ofertas</button><button onclick="go('profile')">Perfil</button></nav>
-  </section>
+        <label>DNI</label>
+        <input type="text" placeholder="Número de DNI" required>
 
-  <!-- DETALLE RUTA -->
-  <section class="screen appscreen" id="routeDetail">
-    <div class="top"><button onclick="go('driverHome')">‹</button><h3>Detalle de la ruta</h3></div>
-    <div class="map"><i></i><b></b><em></em></div>
-    <div id="routeDetailContent"></div>
-  </section>
+        <label>Licencia de conducir</label>
+        <input type="file" required>
 
-  <!-- HACER OFERTA -->
-  <section class="screen appscreen" id="makeOffer">
-    <div class="top"><button onclick="go('routeDetail')">‹</button><h3>Hacer oferta</h3></div>
-    <div class="card center"><small>Tu oferta</small><h1 id="suggestedPrice">S/ 0.00</h1></div>
-    <label>Tu oferta (S/)</label><input id="offerPrice" type="number" placeholder="11.50">
-    <label>Mensaje opcional</label><textarea id="offerMsg" placeholder="Puedo recogerlo en 5 minutos."></textarea>
-    <button class="btn" onclick="sendOffer()">Enviar oferta</button>
-  </section>
+        <label>SOAT vigente</label>
+        <input type="file" required>
 
-  <!-- MIS OFERTAS -->
-  <section class="screen appscreen" id="myOffers">
-    <div class="top"><button onclick="go('driverHome')">‹</button><h3>Mis ofertas</h3></div>
-    <div id="myOffersList"></div>
-  </section>
+        <label>Tarjeta de propiedad</label>
+        <input type="file" required>
 
-  <!-- RUTA EN CURSO -->
-  <section class="screen appscreen" id="currentRoute">
-    <div class="top"><button onclick="go(currentRole==='usuario'?'userHome':'driverHome')">‹</button><h3>Mi ruta en curso</h3></div>
-    <div class="card">
-      <h3 id="currentDriver">Carlos Gómez ⭐ 4.9</h3>
-      <p class="sub">Motero verificado · Honda XR190L</p>
-      <button class="outline">Chat</button><button class="outline">Llamar</button>
-    </div>
-    <div class="card timeline">
-      <p>✅ Solicitud ruteada</p>
-      <p>✅ Motero aceptó tu ruta</p>
-      <p>✅ En camino al punto de recojo</p>
-      <p>✅ Paquete recogido</p>
-      <p>🟢 En camino al destino</p>
-      <p>⚪ Entregado</p>
-    </div>
-    <button class="danger" onclick="cancelRoute()">Cancelar ruta</button>
-  </section>
+        <label>Foto de la moto</label>
+        <input type="file" required>
 
-  <!-- PERFIL -->
-  <section class="screen appscreen" id="profile">
-    <div class="top"><button onclick="go(currentRole==='repartidor'?'driverHome':'userHome')">‹</button><h3>Perfil</h3></div>
-    <div class="card center">
-      <div class="avatar">👤</div>
-      <h2 id="profileName">Anthony Jara</h2>
-      <p id="profileInfo" class="sub">usuario@enruta.com</p>
-    </div>
-    <div class="card menu">
-      <p>👤 Información personal ›</p>
-      <p>💳 Métodos de pago ›</p>
-      <p>📍 Direcciones guardadas ›</p>
-      <p>❓ Centro de ayuda ›</p>
-      <p class="red" onclick="go('selectRole')">🚪 Cerrar sesión</p>
-    </div>
-  </section>
+        <button class="btn primary">Enviar documentos</button>
+      </form>
+    </section>
 
-</div>
+    <!-- CLIENTE PUBLICA PEDIDO -->
+    <section class="screen" id="screenClientePedido">
+      <header class="topbar">
+        <button onclick="showScreen('screenSplash')">←</button>
+        <h2>Publicar pedido</h2>
+      </header>
 
-<script src="enruta.js"></script>
+      <div class="card">
+        <img src="assets/images/pantalla-publicar-pedido.png" class="preview-img" alt="Publicar pedido">
+      </div>
+
+      <form class="form" onsubmit="event.preventDefault(); publicarPedido()">
+        <label>Dirección de origen</label>
+        <input id="origen" type="text" value="Jesús María" required>
+
+        <label>Dirección de destino</label>
+        <input id="destino" type="text" value="Lince" required>
+
+        <label>Distancia estimada en km</label>
+        <input id="distancia" type="number" step="0.1" value="8.6" required oninput="calcularPedido()">
+
+        <label>Precio que ofreces</label>
+        <input id="precioCliente" type="number" step="0.10" value="15.00" required oninput="calcularPedido()">
+
+        <div class="resumen">
+          <div>
+            <span>Mínimo permitido</span>
+            <strong id="minimoPermitido">S/ 9.46</strong>
+          </div>
+
+          <div>
+            <span>Comisión ENRUTA 9%</span>
+            <strong id="comisionApp">S/ 1.35</strong>
+          </div>
+
+          <div>
+            <span>Repartidor recibirá</span>
+            <strong id="recibeRepartidor">S/ 13.65</strong>
+          </div>
+
+          <div>
+            <span>Total a pagar</span>
+            <strong id="totalCliente">S/ 15.00</strong>
+          </div>
+        </div>
+
+        <button class="btn primary">Publicar pedido</button>
+      </form>
+    </section>
+
+    <!-- REPARTIDOR LISTA PEDIDOS -->
+    <section class="screen" id="screenListaPedidos">
+      <header class="topbar">
+        <button onclick="showScreen('screenSplash')">☰</button>
+        <h2>Pedidos disponibles</h2>
+        <img src="assets/icons/campana.svg" class="mini-icon" alt="">
+      </header>
+
+      <div class="card">
+        <img src="assets/images/pantalla-lista-pedidos.png" class="preview-img" alt="Lista de pedidos">
+      </div>
+
+      <div class="pedido-card">
+        <p><img src="assets/icons/ubicacion.svg" alt=""> 8.6 km</p>
+        <h3>Jesús María → Lince</h3>
+        <strong>S/ 15.00</strong>
+        <span>Pago para ti: S/ 13.65</span>
+        <button class="btn primary" onclick="showScreen('screenPedidoAceptado')">Rutear</button>
+      </div>
+    </section>
+
+    <!-- PEDIDO ACEPTADO -->
+    <section class="screen" id="screenPedidoAceptado">
+      <header class="topbar">
+        <button onclick="showScreen('screenListaPedidos')">←</button>
+        <h2>Pedido aceptado</h2>
+      </header>
+
+      <div class="card">
+        <img src="assets/images/pantalla-pedido-aceptado.png" class="preview-img" alt="Pedido aceptado">
+      </div>
+
+      <button class="btn primary" onclick="showScreen('screenEnEntrega')">Iniciar entrega</button>
+    </section>
+
+    <!-- EN ENTREGA -->
+    <section class="screen" id="screenEnEntrega">
+      <header class="topbar">
+        <button onclick="showScreen('screenPedidoAceptado')">←</button>
+        <h2>En entrega</h2>
+      </header>
+
+      <div class="card">
+        <img src="assets/images/pantalla-en-entrega.png" class="preview-img" alt="En entrega">
+      </div>
+
+      <button class="btn primary" onclick="showScreen('screenHistorial')">Pedido entregado</button>
+    </section>
+
+    <!-- HISTORIAL -->
+    <section class="screen" id="screenHistorial">
+      <header class="topbar">
+        <button onclick="showScreen('screenEnEntrega')">←</button>
+        <h2>Historial</h2>
+      </header>
+
+      <div class="card">
+        <img src="assets/images/pantalla-historial.png" class="preview-img" alt="Historial">
+      </div>
+
+      <button class="btn outline" onclick="showScreen('screenPerfilRepartidor')">Ver perfil repartidor</button>
+    </section>
+
+    <!-- PERFIL REPARTIDOR -->
+    <section class="screen" id="screenPerfilRepartidor">
+      <header class="topbar">
+        <button onclick="showScreen('screenHistorial')">←</button>
+        <h2>Mi perfil</h2>
+      </header>
+
+      <div class="card">
+        <img src="assets/images/perfil-repartidor.png" class="preview-img" alt="Perfil repartidor">
+      </div>
+
+      <button class="btn outline" onclick="showScreen('screenSplash')">Cerrar sesión</button>
+    </section>
+
+  </main>
+
 </body>
 </html>
