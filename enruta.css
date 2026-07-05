@@ -8,7 +8,7 @@ body {
   min-height: 100vh;
   background: #020509;
   font-family: Arial, Helvetica, sans-serif;
-  color: white;
+  color: #fff;
   overflow-x: hidden;
 }
 
@@ -26,44 +26,63 @@ body {
 
 .phone {
   width: 390px;
-  height: 844px;
   max-width: 100%;
+  height: 844px;
   position: relative;
   overflow: hidden;
   border-radius: 34px;
   border: 1px solid #27313a;
-  box-shadow: 0 0 45px rgba(0,0,0,.9);
+  box-shadow: 0 0 45px rgba(0, 0, 0, .9);
 }
 
-/* PORTADA */
 .splash-bg {
-  background-image: url("./assets/images/splash-enruta.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url("./assets/images/splash-enruta.png") center/cover no-repeat;
 }
 
 .splash-bg::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0,.25), rgba(0,0,0,.85));
+  background: linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0,.25), rgba(0,0,0,.88));
+}
+
+.brand {
+  position: absolute;
+  top: 68px;
+  left: 24px;
+  right: 24px;
+  z-index: 2;
+  text-align: center;
+}
+
+.brand h1 {
+  font-size: 42px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  color: #61ff00;
+  text-shadow: 0 0 18px rgba(82,230,0,.55);
+}
+
+.brand p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #e8e8e8;
 }
 
 .inicio-actions {
   position: absolute;
   left: 22px;
   right: 22px;
-  bottom: 42px;
+  bottom: 35px;
   z-index: 2;
 }
 
 .btn {
   width: 100%;
-  height: 58px;
+  height: 56px;
   border-radius: 15px;
-  margin-bottom: 15px;
-  font-size: 19px;
+  margin-bottom: 13px;
+  font-size: 18px;
   font-weight: 900;
   cursor: pointer;
 }
@@ -79,27 +98,52 @@ body {
 }
 
 .borde {
-  background: rgba(0,0,0,.5);
+  background: rgba(0,0,0,.55);
   border: 2px solid #52e600;
   color: white;
 }
 
-.inicio-actions p {
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 12px;
+}
+
+.separator span {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,.3);
+}
+
+.separator p {
+  font-size: 13px;
+  color: #ddd;
+}
+
+.inicio-actions h4 {
   text-align: center;
-  font-size: 14px;
+  margin-bottom: 12px;
+  font-size: 15px;
 }
 
-.inicio-actions span {
-  color: #52e600;
-  font-weight: 900;
+.inicio-actions small {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  color: #bfbfbf;
+  margin-top: 6px;
 }
 
-/* FORMULARIOS */
 .form-bg {
   padding: 26px 22px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.login-bg {
+  background: radial-gradient(circle at top, #132310, #05070a 55%, #020509);
 }
 
 .cliente-bg {
@@ -118,18 +162,21 @@ body {
   z-index: 0;
 }
 
+.login-bg::before {
+  background: rgba(0,0,0,.35);
+}
+
 .form-bg > * {
   position: relative;
   z-index: 1;
 }
 
-/* CABECERA */
 .top {
   height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .top button {
@@ -138,20 +185,20 @@ body {
   top: 26px;
   width: 38px;
   height: 38px;
-  background: none;
-  border: none;
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 50%;
   color: white;
-  font-size: 30px;
+  font-size: 25px;
   cursor: pointer;
 }
 
 .top h2 {
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 900;
   text-align: center;
 }
 
-/* PASOS */
 .steps {
   display: flex;
   align-items: center;
@@ -188,7 +235,7 @@ body {
 .labels {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   font-size: 12px;
   text-align: center;
 }
@@ -201,12 +248,16 @@ body {
   color: #d0d0d0;
 }
 
-/* INTRO */
 .intro {
   display: flex;
   gap: 14px;
   align-items: center;
-  margin-bottom: 22px;
+  margin-bottom: 21px;
+}
+
+.intro.center {
+  margin-top: 48px;
+  margin-bottom: 34px;
 }
 
 .circle {
@@ -234,7 +285,6 @@ body {
   color: #d0d0d0;
 }
 
-/* INPUTS */
 .input-row {
   display: grid;
   grid-template-columns: 48px 1fr;
@@ -274,11 +324,82 @@ input {
   outline: none;
 }
 
+input::placeholder {
+  color: #8b969f;
+}
+
 input:focus {
   border-color: #52e600;
 }
 
-/* CAJAS */
+.continue {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 13px;
+  background: linear-gradient(90deg, #43d900, #63ff00);
+  color: white;
+  font-size: 17px;
+  font-weight: 900;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.login-help {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 14px;
+  color: #d4d4d4;
+}
+
+.login-help span {
+  color: #52e600;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.option-card {
+  display: grid;
+  grid-template-columns: 56px 1fr 24px;
+  gap: 14px;
+  align-items: center;
+  background: rgba(16,24,32,.95);
+  border: 1px solid #24313d;
+  border-radius: 18px;
+  padding: 18px 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.option-card > i {
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
+  background: rgba(82,230,0,.12);
+  color: #52e600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+}
+
+.option-card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.option-card p {
+  font-size: 13px;
+  color: #cfcfcf;
+  line-height: 1.35;
+}
+
+.option-card span {
+  color: #52e600;
+  font-size: 24px;
+  font-weight: 900;
+}
+
 .safe {
   display: flex;
   gap: 13px;
@@ -305,20 +426,6 @@ input:focus {
   margin-top: 3px;
 }
 
-/* BOTÓN */
-.continue {
-  width: 100%;
-  height: 52px;
-  border: none;
-  border-radius: 13px;
-  background: linear-gradient(90deg, #43d900, #63ff00);
-  color: white;
-  font-size: 17px;
-  font-weight: 900;
-  cursor: pointer;
-}
-
-/* DOCUMENTOS */
 .doc {
   display: grid;
   grid-template-columns: 48px 1fr 70px;
@@ -362,5 +469,127 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+
+.dashboard {
+  padding: 26px 22px;
+  background: radial-gradient(circle at top, #10220d, #05070a 48%, #020509);
+}
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.dash-header h2 {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.dash-header p {
+  font-size: 14px;
+  color: #cfcfcf;
+}
+
+.dash-header i {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: rgba(82,230,0,.14);
+  color: #52e600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.rutear {
+  width: 100%;
+  height: 62px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(90deg, #43d900, #63ff00);
+  color: white;
+  font-size: 20px;
+  font-weight: 1000;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.rutear i {
+  margin-right: 10px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.menu-card {
+  min-height: 118px;
+  border-radius: 18px;
+  background: rgba(16,24,32,.95);
+  border: 1px solid #24313d;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-card i {
+  color: #52e600;
+  font-size: 26px;
+}
+
+.menu-card p {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.logout {
+  width: 100%;
+  height: 50px;
+  border-radius: 13px;
+  border: 1px solid #384450;
+  background: rgba(0,0,0,.25);
+  color: #dcdcdc;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.pedido-card {
+  background: rgba(16,24,32,.95);
+  border: 1px solid #24313d;
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.pedido-card h3 {
+  color: #52e600;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.pedido-card p {
+  color: #d7d7d7;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+.pedido-card button {
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 8px;
+  background: linear-gradient(90deg, #43d900, #63ff00);
+  color: white;
+  font-weight: 900;
   cursor: pointer;
 }
