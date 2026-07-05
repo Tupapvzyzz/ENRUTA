@@ -5,19 +5,19 @@
 }
 
 body {
+  min-height: 100vh;
   background: #020509;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
 .screen {
   display: none;
   min-height: 100vh;
+  padding: 16px;
   justify-content: center;
   align-items: center;
-  padding: 18px 12px;
 }
 
 .screen.active {
@@ -25,19 +25,19 @@ body {
 }
 
 .phone {
-  width: 100%;
-  max-width: 430px;
-  height: 850px;
+  width: 390px;
+  height: 844px;
+  max-width: 100%;
   position: relative;
   overflow: hidden;
   border-radius: 34px;
   border: 1px solid #27313a;
-  box-shadow: 0 0 45px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 0 45px rgba(0,0,0,.9);
 }
 
 /* PORTADA */
 .splash-bg {
-  background-image: url("assets/images/splash-enruta.png");
+  background-image: url("./assets/images/splash-enruta.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -47,12 +47,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,.05),
-    rgba(0,0,0,.25),
-    rgba(0,0,0,.85)
-  );
+  background: linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0,.25), rgba(0,0,0,.85));
 }
 
 .inicio-actions {
@@ -65,16 +60,16 @@ body {
 
 .btn {
   width: 100%;
-  height: 60px;
-  border-radius: 16px;
-  font-size: 20px;
+  height: 58px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  font-size: 19px;
   font-weight: 900;
-  margin-bottom: 16px;
   cursor: pointer;
 }
 
 .btn i {
-  margin-right: 12px;
+  margin-right: 10px;
 }
 
 .verde {
@@ -84,7 +79,7 @@ body {
 }
 
 .borde {
-  background: rgba(0,0,0,.48);
+  background: rgba(0,0,0,.5);
   border: 2px solid #52e600;
   color: white;
 }
@@ -92,7 +87,6 @@ body {
 .inicio-actions p {
   text-align: center;
   font-size: 14px;
-  color: white;
 }
 
 .inicio-actions span {
@@ -100,27 +94,27 @@ body {
   font-weight: 900;
 }
 
-/* FONDOS FORMULARIOS */
+/* FORMULARIOS */
 .form-bg {
-  padding: 24px 22px;
+  padding: 26px 22px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .cliente-bg {
-  background-image: url("assets/images/registro-cliente.png");
+  background-image: url("./assets/images/registro-cliente.png");
 }
 
 .repartidor-bg {
-  background-image: url("assets/images/registro-repartidor.png");
+  background-image: url("./assets/images/registro-repartidor.png");
 }
 
 .form-bg::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,.76);
+  background: rgba(0,0,0,.82);
   z-index: 0;
 }
 
@@ -129,38 +123,39 @@ body {
   z-index: 1;
 }
 
-/* TOP */
-..top{
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    margin-top:28px;
-    margin-bottom:35px;
-}
+/* CABECERA */
+.top {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
 }
 
 .top button {
   position: absolute;
-  left: 0;
+  left: 22px;
+  top: 26px;
+  width: 38px;
+  height: 38px;
   background: none;
   border: none;
   color: white;
-  font-size: 32px;
+  font-size: 30px;
   cursor: pointer;
 }
 
 .top h2 {
-  font-size: 21px;
+  font-size: 23px;
   font-weight: 900;
+  text-align: center;
 }
 
-/* STEPS */
+/* PASOS */
 .steps {
   display: flex;
   align-items: center;
-  margin: 0 28px 8px;
+  margin: 0 36px 10px;
 }
 
 .steps span {
@@ -173,6 +168,7 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: 900;
+  flex-shrink: 0;
 }
 
 .steps span.active {
@@ -182,7 +178,7 @@ body {
 .line {
   flex: 1;
   height: 3px;
-  background: #444;
+  background: #555;
 }
 
 .line.active {
@@ -190,11 +186,11 @@ body {
 }
 
 .labels {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 24px;
   font-size: 12px;
-  color: #aaa;
-  margin-bottom: 26px;
+  text-align: center;
 }
 
 .labels b {
@@ -202,39 +198,40 @@ body {
 }
 
 .labels p {
-  color: #aaa;
+  color: #d0d0d0;
 }
 
 /* INTRO */
 .intro {
   display: flex;
-  gap: 15px;
+  gap: 14px;
   align-items: center;
   margin-bottom: 22px;
 }
 
 .circle {
-  width: 64px;
-  height: 64px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
   border: 2px solid #27313a;
-  color: #52e600;
   background: rgba(255,255,255,.06);
+  color: #52e600;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 28px;
+  flex-shrink: 0;
 }
 
 .intro h3 {
   font-size: 18px;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .intro p {
-  font-size: 14px;
-  line-height: 1.4;
-  color: #cfcfcf;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #d0d0d0;
 }
 
 /* INPUTS */
@@ -242,14 +239,14 @@ body {
   display: grid;
   grid-template-columns: 48px 1fr;
   gap: 12px;
-  margin-bottom: 14px;
+  margin-bottom: 13px;
   align-items: end;
 }
 
 .input-row > i {
   height: 48px;
   border-radius: 12px;
-  background: rgba(16,24,32,.92);
+  background: rgba(16,24,32,.95);
   border: 1px solid #24313d;
   color: #52e600;
   display: flex;
@@ -261,7 +258,7 @@ body {
 label {
   display: block;
   font-size: 13px;
-  color: #e8e8e8;
+  color: white;
   margin-bottom: 6px;
   font-weight: 800;
 }
@@ -271,7 +268,7 @@ input {
   height: 48px;
   border-radius: 12px;
   border: 1px solid #24313d;
-  background: rgba(16,24,32,.92);
+  background: rgba(16,24,32,.95);
   color: white;
   padding: 0 14px;
   outline: none;
@@ -281,21 +278,21 @@ input:focus {
   border-color: #52e600;
 }
 
-/* SEGURIDAD */
+/* CAJAS */
 .safe {
   display: flex;
-  gap: 14px;
+  gap: 13px;
   align-items: center;
-  background: rgba(16,24,32,.92);
+  background: rgba(16,24,32,.95);
   border: 1px solid #24313d;
   border-radius: 14px;
-  padding: 14px;
-  margin: 18px 0;
+  padding: 13px;
+  margin: 16px 0;
 }
 
 .safe i {
   color: #52e600;
-  font-size: 25px;
+  font-size: 24px;
 }
 
 .safe strong {
@@ -305,10 +302,10 @@ input:focus {
 .safe p {
   font-size: 12px;
   color: #b8b8b8;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 
-/* BOTON CONTINUAR */
+/* BOTÓN */
 .continue {
   width: 100%;
   height: 52px;
@@ -324,19 +321,19 @@ input:focus {
 /* DOCUMENTOS */
 .doc {
   display: grid;
-  grid-template-columns: 50px 1fr 78px;
-  gap: 12px;
+  grid-template-columns: 48px 1fr 70px;
+  gap: 10px;
   align-items: center;
-  background: rgba(16,24,32,.92);
+  background: rgba(16,24,32,.95);
   border: 1px solid #24313d;
   border-radius: 14px;
-  padding: 11px;
-  margin-bottom: 11px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .doc > i {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 12px;
   background: #121b23;
   border: 1px solid #26323d;
@@ -348,17 +345,17 @@ input:focus {
 }
 
 .doc strong {
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .doc p {
   font-size: 12px;
   color: #b8b8b8;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 
 .doc label {
-  height: 54px;
+  height: 48px;
   border: 1px dashed #52e600;
   border-radius: 11px;
   color: #52e600;
