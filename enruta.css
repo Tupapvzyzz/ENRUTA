@@ -432,3 +432,15 @@ body {
   color: #52e600;
   font-weight: 700;
 }
+.registro-card {
+  width: 100%;
+  max-width: 430px;
+  min-height: 850px;
+  background-image: url("assets/imagen/registro-repartidor.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 34px;
+  padding: 24px 22px;
+  overflow: hidden;
+}
