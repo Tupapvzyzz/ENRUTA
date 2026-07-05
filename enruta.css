@@ -22,68 +22,73 @@ body {
   display: flex;
 }
 
- .inicio-box {
+.phone {
   width: 100%;
   max-width: 430px;
-  min-height: 820px;
-  background-image: url("assets/imagen/portada-enruta.png");
+  min-height: 850px;
+  border-radius: 34px;
+  border: 1px solid #252d36;
+  overflow: hidden;
+  padding: 24px 22px;
+  box-shadow: 0 0 45px rgba(0,0,0,.8);
+}
+
+.splash-bg {
+  background-image: url("assets/imagen/splash-enruta.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 34px;
-  padding: 60px 28px;
-  text-align: center;
-  border: 1px solid #202a33;
+  position: relative;
 }
 
-.inicio-box h1 {
-  font-size: 44px;
-  color: #52e600;
+.inicio-actions {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 50px;
 }
 
-.inicio-box p {
-  margin: 10px 0 380px;
-  color: #ccc;
-}
-
-.main-btn,
-.outline-btn {
+.btn {
   width: 100%;
   height: 60px;
   border-radius: 16px;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 18px;
   cursor: pointer;
 }
 
-.main-btn {
+.btn i {
+  margin-right: 12px;
+}
+
+.verde {
   background: linear-gradient(90deg, #43d900, #63ff00);
   border: none;
   color: white;
 }
 
-.outline-btn {
-  background: transparent;
+.borde {
+  background: rgba(0,0,0,.45);
   border: 2px solid #52e600;
   color: white;
 }
 
-.main-btn i,
-.outline-btn i {
-  margin-right: 15px;
+.inicio-actions p,
+.login-text {
+  text-align: center;
+  font-size: 14px;
+  color: white;
 }
 
-.registro-card {
-  width: 100%;
-  max-width: 430px;
-  min-height: 850px;
-  border-radius: 34px;
-  padding: 24px 22px;
-  border: 1px solid #252d36;
-  overflow: hidden;
+.inicio-actions span,
+.login-text span {
+  color: #52e600;
+  font-weight: 800;
+}
+
+.card {
   background: linear-gradient(180deg, #050b10, #020406);
-  box-shadow: 0 0 45px rgba(0,0,0,.8);
 }
 
 .repartidor-bg {
@@ -101,12 +106,7 @@ body {
   margin-bottom: 28px;
 }
 
-.top h2 {
-  font-size: 21px;
-  font-weight: 900;
-}
-
-.back-btn {
+.top button {
   position: absolute;
   left: 0;
   background: none;
@@ -116,13 +116,18 @@ body {
   cursor: pointer;
 }
 
+.top h2 {
+  font-size: 21px;
+  font-weight: 900;
+}
+
 .steps {
   display: flex;
   align-items: center;
   margin: 0 28px 8px;
 }
 
-.step {
+.steps span {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -134,7 +139,7 @@ body {
   font-weight: 900;
 }
 
-.step.active {
+.steps span.active {
   background: #52e600;
 }
 
@@ -156,9 +161,13 @@ body {
   margin-bottom: 30px;
 }
 
-.labels .active {
+.labels b {
   color: #52e600;
-  font-weight: 700;
+  font-weight: 800;
+}
+
+.labels p {
+  color: #aaa;
 }
 
 .intro {
@@ -168,7 +177,7 @@ body {
   margin-bottom: 24px;
 }
 
-.avatar {
+.circle {
   width: 66px;
   height: 66px;
   border-radius: 50%;
@@ -235,7 +244,45 @@ input:focus {
   border-color: #52e600;
 }
 
-.doc-row {
+.safe {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: #101820;
+  border: 1px solid #1f2933;
+  border-radius: 14px;
+  padding: 14px;
+  margin: 18px 0;
+}
+
+.safe i {
+  color: #52e600;
+  font-size: 26px;
+}
+
+.safe strong {
+  font-size: 14px;
+}
+
+.safe p {
+  font-size: 12px;
+  color: #b8b8b8;
+  margin-top: 4px;
+}
+
+.continue {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #43d900, #63ff00);
+  color: white;
+  font-size: 17px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.doc {
   display: grid;
   grid-template-columns: 50px 1fr 78px;
   gap: 12px;
@@ -247,7 +294,7 @@ input:focus {
   margin-bottom: 12px;
 }
 
-.doc-row > i {
+.doc > i {
   width: 50px;
   height: 50px;
   border-radius: 11px;
@@ -260,22 +307,17 @@ input:focus {
   font-size: 20px;
 }
 
-.doc-row strong {
+.doc strong {
   font-size: 15px;
 }
 
-.doc-row p {
+.doc p {
   font-size: 12px;
   color: #b8b8b8;
-  margin: 4px 0;
+  margin-top: 4px;
 }
 
-.doc-row span {
-  font-size: 12px;
-  color: #52e600;
-}
-
-.upload-btn {
+.doc label {
   height: 56px;
   border: 1px dashed #3a444d;
   border-radius: 11px;
@@ -283,43 +325,5 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-}
-
-.safe-box {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  background: #101820;
-  border: 1px solid #1f2933;
-  border-radius: 14px;
-  padding: 14px;
-  margin: 18px 0;
-}
-
-.safe-box i {
-  color: #52e600;
-  font-size: 26px;
-}
-
-.safe-box strong {
-  font-size: 14px;
-}
-
-.safe-box p {
-  font-size: 12px;
-  color: #b8b8b8;
-  margin-top: 4px;
-}
-
-.continue-btn {
-  width: 100%;
-  height: 52px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #43d900, #63ff00);
-  color: white;
-  font-size: 17px;
-  font-weight: 900;
   cursor: pointer;
 }
