@@ -1,210 +1,29 @@
-/* ===================================================
-   ENRUTA v1.0
-   ================================================ */
-
-const screens = document.querySelectorAll(".screen");
-
-/* =======================================
-   CAMBIO DE PANTALLAS
-======================================= */
-
-function showScreen(id) {
-
-    screens.forEach(screen => {
-        screen.classList.remove("active");
-    });
-
-    document.getElementById(id).classList.add("active");
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
+function ocultar(){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'))}
+function mostrar(id){ocultar();document.getElementById(id).classList.add('active')}
+function valor(id,def){const el=document.getElementById(id);return el&&el.value.trim()?el.value.trim():def}
+function volverInicio(){mostrar('inicio')}function abrirLogin(){mostrar('login')}function abrirTipoLogin(){mostrar('tipoLogin')}
+function abrirCliente(){mostrar('registroCliente')}function abrirClienteVerificacion(){mostrar('registroClienteVerificacion')}function abrirClienteListo(){mostrar('registroClienteListo')}
+function abrirRepartidor(){mostrar('registroRepartidorDatos')}function abrirDocsRepartidor(){mostrar('registroRepartidorDocs')}function abrirRepartidorListo(){mostrar('registroRepartidorListo')}
+function abrirHomeCliente(){mostrar('homeCliente')}function abrirHomeRepartidor(){mostrar('homeRepartidor')}
+function abrirPublicarPedido(){mostrar('publicarPedido')}
+function confirmarPedido(){
+  document.getElementById('rRecojo').textContent=valor('recojo','Jesús María');
+  document.getElementById('rEntrega').textContent=valor('entrega','Lince');
+  document.getElementById('rPaquete').textContent=valor('paquete','Paquete pequeño');
+  document.getElementById('rPeso').textContent=valor('peso','Mediano');
+  document.getElementById('rPrecio').textContent=valor('precio','S/ 9.00');
+  document.getElementById('rObs').textContent=valor('obs','Sin observaciones');
+  mostrar('confirmarPedido')
 }
-
-/* =======================================
-   VARIABLES
-======================================= */
-
-const PRECIO_KM = 1.10;
-const COMISION = 0.09;
-
-/* =======================================
-   CALCULAR PEDIDO
-======================================= */
-
-function calcularPedido(){
-
-    const km =
-    parseFloat(document.getElementById("distancia").value) || 0;
-
-    const precio =
-    parseFloat(document.getElementById("precioCliente").value) || 0;
-
-    const minimo = km * PRECIO_KM;
-
-    const comision = precio * COMISION;
-
-    const repartidor = precio - comision;
-
-    document.getElementById("minimoPermitido").innerHTML =
-    "S/ " + minimo.toFixed(2);
-
-    document.getElementById("comisionApp").innerHTML =
-    "S/ " + comision.toFixed(2);
-
-    document.getElementById("recibeRepartidor").innerHTML =
-    "S/ " + repartidor.toFixed(2);
-
-    document.getElementById("totalCliente").innerHTML =
-    "S/ " + precio.toFixed(2);
-
+function abrirBuscando(){mostrar('buscando')}function abrirOfertas(){mostrar('ofertas')}
+let lastDriver={name:'Carlos R.',placa:'ABC-123',precio:'S/ 8.50'};
+function abrirAsignado(name,placa,precio){
+  if(name){lastDriver={name,placa,precio}}
+  document.getElementById('driverName').textContent=lastDriver.name;
+  document.getElementById('driverPlaca').textContent=lastDriver.placa;
+  document.getElementById('driverPrecio').textContent=lastDriver.precio;
+  mostrar('asignado')
 }
-
-/* =======================================
-   PUBLICAR PEDIDO
-======================================= */
-
-function publicarPedido(){
-
-    const km =
-    parseFloat(document.getElementById("distancia").value);
-
-    const precio =
-    parseFloat(document.getElementById("precioCliente").value);
-
-    const minimo = km * PRECIO_KM;
-
-    if(precio < minimo){
-
-        alert(
-            "El precio mínimo permitido es S/ "
-            + minimo.toFixed(2)
-            + "\n\nPrecio por kilómetro: S/1.10"
-        );
-
-        return;
-
-    }
-
-    alert(
-
-`Pedido publicado correctamente.
-
-Cliente pagará:
-S/ ${precio.toFixed(2)}
-
-Comisión ENRUTA (9%)
-S/ ${(precio*COMISION).toFixed(2)}
-
-Repartidor recibirá
-S/ ${(precio-(precio*COMISION)).toFixed(2)}
-
-Esperando que un repartidor acepte el pedido...`
-
-    );
-
-    showScreen("screenListaPedidos");
-
-}
-
-/* =======================================
-   FORMATO MONEDA
-======================================= */
-
-function moneda(valor){
-
-    return "S/ " + valor.toFixed(2);
-
-}
-
-/* =======================================
-   PEDIDO ACEPTADO
-======================================= */
-
-function aceptarPedido(){
-
-    alert("Has aceptado el pedido.");
-
-    showScreen("screenPedidoAceptado");
-
-}
-
-/* =======================================
-   ENTREGA
-======================================= */
-
-function iniciarEntrega(){
-
-    alert("Ruta iniciada.");
-
-    showScreen("screenEnEntrega");
-
-}
-
-function finalizarEntrega(){
-
-    alert("Entrega completada.");
-
-    showScreen("screenHistorial");
-
-}
-
-/* =======================================
-   HISTORIAL
-======================================= */
-
-const historial = [];
-
-function agregarHistorial(origen,destino,monto){
-
-    historial.push({
-
-        origen,
-        destino,
-        monto
-
-    });
-
-}
-
-/* =======================================
-   CARGA
-======================================= */
-
-window.onload = ()=>{
-
-    calcularPedido();
-
-};
-
-/* =======================================
-   FUTURAS FUNCIONES
-======================================= */
-
-/*
-
-LOGIN
-
-REGISTRO
-
-MAPAS
-
-GPS
-
-FIREBASE
-
-SUPABASE
-
-NOTIFICACIONES
-
-PANEL ADMIN
-
-CHAT
-
-PAGOS
-
-CALIFICACIONES
-
-*/
+function abrirSeguimiento(){mostrar('seguimiento')}function abrirEntregado(){mostrar('entregado')}
+function abrirDetallePedido(){mostrar('detallePedido')}function abrirEnviarOferta(){mostrar('enviarOferta')}function abrirOfertaEnviada(){mostrar('ofertaEnviada')}
+function abrirPedidoAceptado(){mostrar('pedidoAceptado')}function abrirRecojoConfirmado(){mostrar('recojoConfirmado')}function abrirEntregaFinalizada(){mostrar('entregaFinalizada')}
