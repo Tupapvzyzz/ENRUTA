@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>ENRUTA</title>
+  <title>ENRUTA MVP</title>
 
-  <link rel="stylesheet" href="./enruta.css?v=40" />
+  <link rel="stylesheet" href="./enruta.css?v=100" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
@@ -22,7 +22,6 @@
     </div>
 
     <div class="inicio-actions">
-
       <button class="btn verde" onclick="abrirLogin()">
         <i class="fa-solid fa-right-to-bracket"></i> Iniciar sesión
       </button>
@@ -44,8 +43,8 @@
       </button>
 
       <small>Al continuar aceptas los Términos y Condiciones</small>
-
     </div>
+
   </div>
 </section>
 
@@ -59,7 +58,9 @@
     </div>
 
     <div class="intro center">
-      <div class="circle"><i class="fa-solid fa-route"></i></div>
+      <div class="circle">
+        <i class="fa-solid fa-route"></i>
+      </div>
       <div>
         <h3>Bienvenido de nuevo</h3>
         <p>Ingresa tus datos para continuar en ENRUTA.</p>
@@ -91,7 +92,7 @@
   </div>
 </section>
 
-<!-- ELEGIR TIPO LOGIN -->
+<!-- ELEGIR TIPO DE CUENTA AL INICIAR SESIÓN -->
 <section id="tipoLogin" class="screen">
   <div class="phone form-bg login-bg">
 
@@ -101,7 +102,9 @@
     </div>
 
     <div class="intro center">
-      <div class="circle"><i class="fa-solid fa-users"></i></div>
+      <div class="circle">
+        <i class="fa-solid fa-users"></i>
+      </div>
       <div>
         <h3>Selecciona tu perfil</h3>
         <p>Elige cómo quieres usar ENRUTA.</p>
@@ -128,7 +131,6 @@
 
   </div>
 </section>
-
 <!-- CLIENTE PASO 1 -->
 <section id="registroCliente" class="screen">
   <div class="phone form-bg cliente-bg">
@@ -182,7 +184,6 @@
     </div>
 
     <button class="continue" onclick="abrirClienteVerificacion()">Continuar →</button>
-
   </div>
 </section>
 
@@ -215,19 +216,13 @@
 
     <div class="doc">
       <i class="fa-regular fa-id-card"></i>
-      <div>
-        <strong>DNI frontal</strong>
-        <p>Foto clara del documento</p>
-      </div>
+      <div><strong>DNI frontal</strong><p>Foto clara del documento</p></div>
       <label>Subir<input type="file" hidden /></label>
     </div>
 
     <div class="doc">
       <i class="fa-solid fa-camera"></i>
-      <div>
-        <strong>Selfie</strong>
-        <p>Foto clara del rostro</p>
-      </div>
+      <div><strong>Selfie</strong><p>Foto clara del rostro</p></div>
       <label>Subir<input type="file" hidden /></label>
     </div>
 
@@ -240,7 +235,6 @@
     </div>
 
     <button class="continue" onclick="abrirClienteListo()">Continuar →</button>
-
   </div>
 </section>
 
@@ -256,7 +250,6 @@
     <p>Tu cuenta de cliente está lista para publicar pedidos en ENRUTA.</p>
 
     <button class="continue" onclick="abrirLogin()">Ir a iniciar sesión →</button>
-
   </div>
 </section>
 
@@ -313,7 +306,6 @@
     </div>
 
     <button class="continue" onclick="abrirDocsRepartidor()">Continuar →</button>
-
   </div>
 </section>
 
@@ -367,7 +359,6 @@
     </div>
 
     <button class="continue" onclick="abrirRepartidorListo()">Finalizar registro →</button>
-
   </div>
 </section>
 
@@ -383,10 +374,8 @@
     <p>Revisaremos tus documentos. Cuando sean aprobados podrás recibir pedidos.</p>
 
     <button class="continue" onclick="abrirLogin()">Ir a iniciar sesión →</button>
-
   </div>
 </section>
-
 <!-- HOME CLIENTE -->
 <section id="homeCliente" class="screen">
   <div class="phone dashboard">
@@ -426,25 +415,200 @@
 
     <div class="input-row">
       <i class="fa-solid fa-location-dot"></i>
-      <div><label>Punto de recojo</label><input placeholder="¿Dónde recogemos?" /></div>
+      <div><label>Punto de recojo</label><input id="recojoPedido" placeholder="Ej. Av. Brasil 1450" /></div>
     </div>
 
     <div class="input-row">
       <i class="fa-solid fa-flag-checkered"></i>
-      <div><label>Punto de entrega</label><input placeholder="¿Dónde entregamos?" /></div>
+      <div><label>Punto de entrega</label><input id="entregaPedido" placeholder="Ej. Av. Arequipa 850" /></div>
     </div>
 
     <div class="input-row">
       <i class="fa-solid fa-box"></i>
-      <div><label>Descripción</label><input placeholder="Ej. paquete pequeño" /></div>
+      <div><label>Descripción</label><input id="descripcionPedido" placeholder="Ej. paquete pequeño" /></div>
+    </div>
+
+    <div class="input-row">
+      <i class="fa-solid fa-scale-balanced"></i>
+      <div><label>Peso aproximado</label><input id="pesoPedido" placeholder="Ej. 2 kg" /></div>
     </div>
 
     <div class="input-row">
       <i class="fa-solid fa-money-bill"></i>
-      <div><label>Precio sugerido</label><input placeholder="Ej. S/ 8.00" /></div>
+      <div><label>Precio sugerido</label><input id="precioPedido" placeholder="Ej. S/ 9.00" /></div>
     </div>
 
-    <button class="continue">Rutear →</button>
+    <button class="continue" onclick="abrirConfirmarPedido()">Continuar →</button>
+
+  </div>
+</section>
+
+<!-- CONFIRMAR PEDIDO -->
+<section id="confirmarPedido" class="screen">
+  <div class="phone dashboard">
+
+    <div class="top">
+      <button onclick="abrirPublicarPedido()">←</button>
+      <h2>Confirmar pedido</h2>
+    </div>
+
+    <div class="resumen-card">
+      <h3>Resumen del pedido</h3>
+
+      <p><b>Recojo:</b> <span id="resumenRecojo">Av. Brasil 1450</span></p>
+      <p><b>Entrega:</b> <span id="resumenEntrega">Av. Arequipa 850</span></p>
+      <p><b>Paquete:</b> <span id="resumenDescripcion">Paquete pequeño</span></p>
+      <p><b>Peso:</b> <span id="resumenPeso">2 kg</span></p>
+      <p><b>Precio:</b> <span id="resumenPrecio">S/ 9.00</span></p>
+    </div>
+
+    <div class="safe">
+      <i class="fa-solid fa-circle-info"></i>
+      <div>
+        <strong>Publicación tipo oferta</strong>
+        <p>Los repartidores cercanos podrán enviarte propuestas.</p>
+      </div>
+    </div>
+
+    <button class="continue" onclick="abrirBuscandoRepartidores()">RUTEAR →</button>
+
+  </div>
+</section>
+
+<!-- BUSCANDO REPARTIDORES -->
+<section id="buscandoRepartidores" class="screen">
+  <div class="phone dashboard searching-screen">
+
+    <div class="search-icon">
+      <i class="fa-solid fa-motorcycle"></i>
+    </div>
+
+    <h2>Buscando repartidores...</h2>
+    <p>Estamos encontrando repartidores cercanos a tu zona.</p>
+
+    <div class="loading-dots">
+      <span></span><span></span><span></span>
+    </div>
+
+    <button class="continue" onclick="abrirOfertasCliente()">Ver ofertas simuladas →</button>
+
+  </div>
+</section>
+
+<!-- OFERTAS CLIENTE -->
+<section id="ofertasCliente" class="screen">
+  <div class="phone dashboard">
+
+    <div class="top">
+      <button onclick="abrirHomeCliente()">←</button>
+      <h2>Ofertas recibidas</h2>
+    </div>
+
+    <div class="offer-card best">
+      <div>
+        <h3>Carlos Ramírez</h3>
+        <p>⭐ 4.9 · 860 entregas</p>
+        <small>Más rápida · llega en 5 min</small>
+      </div>
+      <strong>S/ 8.50</strong>
+      <button onclick="abrirRepartidorAsignado('Carlos Ramírez','S/ 8.50','5 min','ABC-123')">Aceptar</button>
+    </div>
+
+    <div class="offer-card">
+      <div>
+        <h3>Luis Torres</h3>
+        <p>⭐ 5.0 · 1420 entregas</p>
+        <small>Mejor calificación</small>
+      </div>
+      <strong>S/ 9.00</strong>
+      <button onclick="abrirRepartidorAsignado('Luis Torres','S/ 9.00','7 min','MOT-778')">Aceptar</button>
+    </div>
+
+    <div class="offer-card">
+      <div>
+        <h3>Miguel Castro</h3>
+        <p>⭐ 4.8 · 530 entregas</p>
+        <small>Mejor precio</small>
+      </div>
+      <strong>S/ 7.90</strong>
+      <button onclick="abrirRepartidorAsignado('Miguel Castro','S/ 7.90','9 min','LIM-420')">Aceptar</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- REPARTIDOR ASIGNADO -->
+<section id="repartidorAsignado" class="screen">
+  <div class="phone dashboard">
+
+    <div class="top">
+      <button onclick="abrirOfertasCliente()">←</button>
+      <h2>Repartidor asignado</h2>
+    </div>
+
+    <div class="driver-card">
+      <div class="driver-avatar">
+        <i class="fa-solid fa-user"></i>
+      </div>
+
+      <h3 id="driverNombre">Carlos Ramírez</h3>
+      <p>⭐ 4.9 · Moto lineal</p>
+
+      <div class="driver-info">
+        <span><b>Oferta</b><small id="driverPrecio">S/ 8.50</small></span>
+        <span><b>Llega en</b><small id="driverTiempo">5 min</small></span>
+        <span><b>Placa</b><small id="driverPlaca">ABC-123</small></span>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button><i class="fa-solid fa-phone"></i> Llamar</button>
+      <button><i class="fa-solid fa-message"></i> Chat</button>
+    </div>
+
+    <button class="continue" onclick="abrirSeguimientoPedido()">Ver seguimiento →</button>
+
+  </div>
+</section>
+
+<!-- SEGUIMIENTO PEDIDO -->
+<section id="seguimientoPedido" class="screen">
+  <div class="phone dashboard">
+
+    <div class="top">
+      <button onclick="abrirRepartidorAsignado()">←</button>
+      <h2>Seguimiento</h2>
+    </div>
+
+    <div class="map-fake">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <p>Mapa GPS próximamente</p>
+    </div>
+
+    <div class="timeline">
+      <div class="active"><span></span><p>Repartidor en camino al recojo</p></div>
+      <div><span></span><p>Pedido recogido</p></div>
+      <div><span></span><p>En camino al destino</p></div>
+      <div><span></span><p>Pedido entregado</p></div>
+    </div>
+
+    <button class="continue" onclick="abrirPedidoEntregado()">Simular entrega →</button>
+
+  </div>
+</section>
+
+<!-- PEDIDO ENTREGADO -->
+<section id="pedidoEntregado" class="screen">
+  <div class="phone dashboard listo-screen">
+
+    <div class="success-icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+
+    <h2>¡Pedido entregado!</h2>
+    <p>Tu envío fue completado correctamente.</p>
+
+    <button class="continue" onclick="abrirHomeCliente()">Volver al inicio →</button>
 
   </div>
 </section>
@@ -461,20 +625,20 @@
       <i class="fa-solid fa-motorcycle"></i>
     </div>
 
-    <div class="pedido-card">
+    <div class="pedido-card" onclick="abrirDetallePedidoRepartidor()">
       <h3>Pedido disponible</h3>
       <p><b>Recojo:</b> Jesús María</p>
       <p><b>Entrega:</b> Lince</p>
-      <p><b>Precio:</b> S/ 9.00</p>
-      <button>Tomar pedido</button>
+      <p><b>Cliente ofrece:</b> S/ 9.00</p>
+      <button>Ver detalle</button>
     </div>
 
     <div class="pedido-card">
       <h3>Pedido disponible</h3>
       <p><b>Recojo:</b> Pueblo Libre</p>
       <p><b>Entrega:</b> San Miguel</p>
-      <p><b>Precio:</b> S/ 12.00</p>
-      <button>Tomar pedido</button>
+      <p><b>Cliente ofrece:</b> S/ 12.00</p>
+      <button>Ver detalle</button>
     </div>
 
     <div class="menu-grid">
@@ -487,66 +651,129 @@
   </div>
 </section>
 
-<script>
-  function ocultar() {
-    document.querySelectorAll(".screen").forEach(screen => {
-      screen.classList.remove("active");
-    });
-  }
+<!-- DETALLE PEDIDO REPARTIDOR -->
+<section id="detallePedidoRepartidor" class="screen">
+  <div class="phone dashboard">
 
-  function mostrar(id) {
-    ocultar();
-    document.getElementById(id).classList.add("active");
-  }
+    <div class="top">
+      <button onclick="abrirHomeRepartidor()">←</button>
+      <h2>Detalle del pedido</h2>
+    </div>
 
-  function volverInicio() {
-    mostrar("inicio");
-  }
+    <div class="resumen-card">
+      <h3>Pedido del cliente</h3>
+      <p><b>Recojo:</b> Jesús María</p>
+      <p><b>Entrega:</b> Lince</p>
+      <p><b>Paquete:</b> Documentos</p>
+      <p><b>Distancia:</b> 4.8 km</p>
+      <p><b>Cliente ofrece:</b> S/ 9.00</p>
+    </div>
 
-  function abrirLogin() {
-    mostrar("login");
-  }
+    <div class="input-row">
+      <i class="fa-solid fa-money-bill"></i>
+      <div>
+        <label>Tu oferta</label>
+        <input id="ofertaRepartidor" placeholder="Ej. S/ 8.50" />
+      </div>
+    </div>
 
-  function abrirTipoLogin() {
-    mostrar("tipoLogin");
-  }
+    <button class="continue" onclick="abrirOfertaEnviada()">Enviar oferta →</button>
 
-  function abrirCliente() {
-    mostrar("registroCliente");
-  }
+  </div>
+</section>
 
-  function abrirClienteVerificacion() {
-    mostrar("registroClienteVerificacion");
-  }
+<!-- OFERTA ENVIADA -->
+<section id="ofertaEnviada" class="screen">
+  <div class="phone dashboard searching-screen">
 
-  function abrirClienteListo() {
-    mostrar("registroClienteListo");
-  }
+    <div class="search-icon">
+      <i class="fa-solid fa-paper-plane"></i>
+    </div>
 
-  function abrirRepartidor() {
-    mostrar("registroRepartidorDatos");
-  }
+    <h2>Oferta enviada</h2>
+    <p>Esperando que el cliente acepte tu propuesta.</p>
 
-  function abrirDocsRepartidor() {
-    mostrar("registroRepartidorDocs");
-  }
+    <button class="continue" onclick="abrirPedidoAceptadoRepartidor()">Simular aceptación →</button>
 
-  function abrirRepartidorListo() {
-    mostrar("registroRepartidorListo");
-  }
+  </div>
+</section>
 
-  function abrirHomeCliente() {
-    mostrar("homeCliente");
-  }
+<!-- PEDIDO ACEPTADO REPARTIDOR -->
+<section id="pedidoAceptadoRepartidor" class="screen">
+  <div class="phone dashboard">
 
-  function abrirHomeRepartidor() {
-    mostrar("homeRepartidor");
-  }
+    <div class="top">
+      <button onclick="abrirHomeRepartidor()">←</button>
+      <h2>Pedido aceptado</h2>
+    </div>
 
-  function abrirPublicarPedido() {
-    mostrar("publicarPedido");
-  }
-</script>
+    <div class="resumen-card">
+      <h3>Ruta asignada</h3>
+      <p><b>Cliente:</b> Anthony</p>
+      <p><b>Recojo:</b> Jesús María</p>
+      <p><b>Entrega:</b> Lince</p>
+      <p><b>Pago:</b> S/ 8.50</p>
+    </div>
 
+    <button class="continue" onclick="abrirRecojoRepartidor()">Ir al recojo →</button>
+
+  </div>
+</section>
+
+<!-- RECOJO REPARTIDOR -->
+<section id="recojoRepartidor" class="screen">
+  <div class="phone dashboard">
+
+    <div class="top">
+      <button onclick="abrirPedidoAceptadoRepartidor()">←</button>
+      <h2>Recojo</h2>
+    </div>
+
+    <div class="map-fake">
+      <i class="fa-solid fa-location-crosshairs"></i>
+      <p>Dirígete al punto de recojo</p>
+    </div>
+
+    <button class="continue" onclick="abrirEntregaRepartidor()">Pedido recogido →</button>
+
+  </div>
+</section>
+
+<!-- ENTREGA REPARTIDOR -->
+<section id="entregaRepartidor" class="screen">
+  <div class="phone dashboard">
+
+    <div class="top">
+      <button onclick="abrirRecojoRepartidor()">←</button>
+      <h2>Entrega</h2>
+    </div>
+
+    <div class="map-fake">
+      <i class="fa-solid fa-flag-checkered"></i>
+      <p>Dirígete al punto de entrega</p>
+    </div>
+
+    <button class="continue" onclick="abrirEntregaFinalizada()">Finalizar entrega →</button>
+
+  </div>
+</section>
+
+<!-- ENTREGA FINALIZADA -->
+<section id="entregaFinalizada" class="screen">
+  <div class="phone dashboard listo-screen">
+
+    <div class="success-icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+
+    <h2>Entrega finalizada</h2>
+    <p>Buen trabajo. La entrega fue completada correctamente.</p>
+
+    <button class="continue" onclick="abrirHomeRepartidor()">Volver al inicio →</button>
+
+  </div>
+</section>
+
+<script src="./enruta.js?v=100"></script>
 </body>
 </html>
