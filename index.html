@@ -11,238 +11,203 @@
 
 <body>
 
-<!-- INICIO -->
 <section id="inicio" class="screen active">
-  <div class="inicio-box">
-    <h1>ENRUTA</h1>
-    <p>Entregas que te mueven</p>
+  <div class="phone splash-bg">
+    <div class="inicio-actions">
+      <button class="btn verde" onclick="abrirCliente()">
+        <i class="fa-solid fa-user"></i> Soy Cliente
+      </button>
 
-    <button class="main-btn" onclick="abrirRegistro('cliente')">
-      <i class="fa-solid fa-user"></i>
-      Soy Cliente
-    </button>
+      <button class="btn borde" onclick="abrirRepartidor()">
+        <i class="fa-solid fa-motorcycle"></i> Soy Repartidor
+      </button>
 
-    <button class="outline-btn" onclick="abrirRegistro('repartidor')">
-      <i class="fa-solid fa-motorcycle"></i>
-      Soy Repartidor
-    </button>
+      <p>¿Ya tienes cuenta? <span>Iniciar sesión</span></p>
+    </div>
   </div>
 </section>
 
-<!-- REGISTRO CLIENTE -->
 <section id="registroCliente" class="screen">
-  <div class="registro-card">
+  <div class="phone card">
 
     <div class="top">
-      <button class="back-btn" onclick="volverInicio()">←</button>
+      <button onclick="volverInicio()">←</button>
       <h2>Registro de Cliente</h2>
     </div>
 
     <div class="steps">
-      <span class="step active">1</span>
-      <span class="line active"></span>
-      <span class="step">2</span>
-      <span class="line"></span>
-      <span class="step">3</span>
+      <span class="active">1</span><div class="line active"></div>
+      <span>2</span><div class="line"></div>
+      <span>3</span>
     </div>
 
     <div class="labels">
-      <span class="active">Datos personales</span>
-      <span>Verificación</span>
-      <span>¡Listo!</span>
+      <b>Datos personales</b><p>Verificación</p><p>¡Listo!</p>
     </div>
 
     <div class="intro">
-      <div class="avatar"><i class="fa-solid fa-user"></i></div>
+      <div class="circle"><i class="fa-solid fa-user"></i></div>
       <div>
         <h3>Crea tu cuenta en Enruta</h3>
-        <p>Completa tus datos para empezar a publicar pedidos de entrega.</p>
+        <p>Completa tus datos para empezar a publicar pedidos.</p>
       </div>
     </div>
 
-    <form class="formulario">
-      <div class="input-row">
-        <i class="fa-regular fa-user"></i>
-        <div>
-          <label>Nombres completos</label>
-          <input type="text" placeholder="Ej. Luis Alberto">
-        </div>
+    <div class="input-row">
+      <i class="fa-regular fa-user"></i>
+      <div><label>Nombres completos</label><input placeholder="Ej. Luis Alberto"></div>
+    </div>
+
+    <div class="input-row">
+      <i class="fa-regular fa-id-card"></i>
+      <div><label>DNI</label><input placeholder="Ingresa tu DNI"></div>
+    </div>
+
+    <div class="input-row">
+      <i class="fa-regular fa-envelope"></i>
+      <div><label>Correo electrónico</label><input placeholder="ejemplo@correo.com"></div>
+    </div>
+
+    <div class="input-row">
+      <i class="fa-solid fa-phone"></i>
+      <div><label>Número de celular</label><input placeholder="912 345 678"></div>
+    </div>
+
+    <div class="input-row">
+      <i class="fa-solid fa-location-dot"></i>
+      <div><label>Dirección de referencia</label><input placeholder="Ej. Av. Arequipa 1234"></div>
+    </div>
+
+    <div class="safe">
+      <i class="fa-solid fa-shield-halved"></i>
+      <div>
+        <strong>Tu información está protegida</strong>
+        <p>En Enruta cuidamos tus datos.</p>
       </div>
+    </div>
 
-      <div class="input-row">
-        <i class="fa-regular fa-id-card"></i>
-        <div>
-          <label>DNI</label>
-          <input type="text" placeholder="Ingresa tu DNI">
-        </div>
-      </div>
-
-      <div class="input-row">
-        <i class="fa-regular fa-envelope"></i>
-        <div>
-          <label>Correo electrónico</label>
-          <input type="email" placeholder="ejemplo@correo.com">
-        </div>
-      </div>
-
-      <div class="input-row">
-        <i class="fa-solid fa-phone"></i>
-        <div>
-          <label>Número de celular</label>
-          <input type="tel" placeholder="912 345 678">
-        </div>
-      </div>
-
-      <div class="input-row">
-        <i class="fa-solid fa-location-dot"></i>
-        <div>
-          <label>Dirección de referencia</label>
-          <input type="text" placeholder="Ej. Av. Arequipa 1234">
-        </div>
-      </div>
-
-      <div class="safe-box">
-        <i class="fa-solid fa-shield-halved"></i>
-        <div>
-          <strong>Tu información está protegida</strong>
-          <p>En Enruta cuidamos tus datos.</p>
-        </div>
-      </div>
-
-      <button type="button" class="continue-btn">Continuar →</button>
-    </form>
-
+    <button class="continue">Continuar →</button>
   </div>
 </section>
 
-<!-- REGISTRO REPARTIDOR -->
-<section id="registroRepartidor" class="screen">
-  <div class="registro-card repartidor-bg">
+<section id="registroRepartidorDatos" class="screen">
+  <div class="phone repartidor-bg">
 
     <div class="top">
-      <button class="back-btn" onclick="volverInicio()">←</button>
-      <h2>Registro Repartidor</h2>
+      <button onclick="volverInicio()">←</button>
+      <h2>Registro de Repartidor</h2>
     </div>
 
     <div class="steps">
-      <span class="step active">1</span>
-      <span class="line active"></span>
-      <span class="step active">2</span>
-      <span class="line"></span>
-      <span class="step">3</span>
+      <span class="active">1</span><div class="line"></div>
+      <span>2</span><div class="line"></div>
+      <span>3</span>
     </div>
 
     <div class="labels">
-      <span class="active">Datos personales</span>
-      <span class="active">Documentos</span>
-      <span>Verificación</span>
+      <b>Datos personales</b><p>Documentos</p><p>Verificación</p>
     </div>
 
     <div class="intro">
-      <div class="avatar"><i class="fa-solid fa-file-shield"></i></div>
+      <div class="circle"><i class="fa-solid fa-motorcycle"></i></div>
       <div>
-        <h3>Sube tus documentos</h3>
-        <p>Todos los documentos son obligatorios para comenzar a recibir pedidos.</p>
+        <h3>Crea tu cuenta de repartidor</h3>
+        <p>Primero completa tus datos personales.</p>
       </div>
     </div>
 
-    <form class="formulario">
+    <div class="input-row">
+      <i class="fa-regular fa-user"></i>
+      <div><label>Nombres completos</label><input placeholder="Ej. Luis Alberto"></div>
+    </div>
 
-      <div class="doc-row">
-        <i class="fa-regular fa-id-card"></i>
-        <div>
-          <strong>DNI</strong>
-          <p>Foto o escaneo de tu DNI</p>
-          <span>Obligatorio</span>
-        </div>
-        <label class="upload-btn">
-          Subir
-          <input type="file" hidden>
-        </label>
+    <div class="input-row">
+      <i class="fa-regular fa-id-card"></i>
+      <div><label>DNI</label><input placeholder="Ingresa tu DNI"></div>
+    </div>
+
+    <div class="input-row">
+      <i class="fa-regular fa-envelope"></i>
+      <div><label>Correo electrónico</label><input placeholder="ejemplo@correo.com"></div>
+    </div>
+
+    <div class="input-row">
+      <i class="fa-solid fa-phone"></i>
+      <div><label>Número de celular</label><input placeholder="912 345 678"></div>
+    </div>
+
+    <div class="input-row">
+      <i class="fa-solid fa-location-dot"></i>
+      <div><label>Dirección de referencia</label><input placeholder="Ej. Av. Arequipa 1234"></div>
+    </div>
+
+    <button class="continue" onclick="abrirDocsRepartidor()">Continuar →</button>
+  </div>
+</section>
+
+<section id="registroRepartidorDocs" class="screen">
+  <div class="phone repartidor-bg">
+
+    <div class="top">
+      <button onclick="abrirRepartidor()">←</button>
+      <h2>Registro de Repartidor</h2>
+    </div>
+
+    <div class="steps">
+      <span class="active">1</span><div class="line active"></div>
+      <span class="active">2</span><div class="line"></div>
+      <span>3</span>
+    </div>
+
+    <div class="labels">
+      <b>Datos personales</b><b>Documentos</b><p>Verificación</p>
+    </div>
+
+    <div class="intro">
+      <div class="circle"><i class="fa-solid fa-file-shield"></i></div>
+      <div>
+        <h3>Sube tus documentos</h3>
+        <p>Todos son obligatorios para recibir pedidos.</p>
       </div>
+    </div>
 
-      <div class="doc-row">
-        <i class="fa-solid fa-id-card"></i>
-        <div>
-          <strong>Licencia</strong>
-          <p>Licencia de conducir vigente</p>
-          <span>Obligatorio</span>
-        </div>
-        <label class="upload-btn">
-          Subir
-          <input type="file" hidden>
-        </label>
+    <div class="doc"><i class="fa-regular fa-id-card"></i><div><strong>DNI</strong><p>Foto o escaneo</p></div><label>Subir<input type="file" hidden></label></div>
+    <div class="doc"><i class="fa-solid fa-id-card"></i><div><strong>Licencia</strong><p>Conducir vigente</p></div><label>Subir<input type="file" hidden></label></div>
+    <div class="doc"><i class="fa-solid fa-motorcycle"></i><div><strong>Foto de moto</strong><p>Foto clara</p></div><label>Subir<input type="file" hidden></label></div>
+    <div class="doc"><i class="fa-solid fa-shield-halved"></i><div><strong>SOAT</strong><p>Vigente</p></div><label>Subir<input type="file" hidden></label></div>
+    <div class="doc"><i class="fa-regular fa-file-lines"></i><div><strong>Tarjeta propiedad</strong><p>Foto o escaneo</p></div><label>Subir<input type="file" hidden></label></div>
+
+    <div class="safe">
+      <i class="fa-solid fa-lock"></i>
+      <div>
+        <strong>Documentos seguros</strong>
+        <p>Solo para verificar tu cuenta.</p>
       </div>
+    </div>
 
-      <div class="doc-row">
-        <i class="fa-solid fa-motorcycle"></i>
-        <div>
-          <strong>Foto de la moto</strong>
-          <p>Foto clara de tu moto</p>
-          <span>Obligatorio</span>
-        </div>
-        <label class="upload-btn">
-          Subir
-          <input type="file" hidden>
-        </label>
-      </div>
-
-      <div class="doc-row">
-        <i class="fa-solid fa-shield-halved"></i>
-        <div>
-          <strong>SOAT vigente</strong>
-          <p>SOAT actual y vigente</p>
-          <span>Obligatorio</span>
-        </div>
-        <label class="upload-btn">
-          Subir
-          <input type="file" hidden>
-        </label>
-      </div>
-
-      <div class="doc-row">
-        <i class="fa-regular fa-file-lines"></i>
-        <div>
-          <strong>Tarjeta propiedad</strong>
-          <p>Foto o escaneo de la tarjeta</p>
-          <span>Obligatorio</span>
-        </div>
-        <label class="upload-btn">
-          Subir
-          <input type="file" hidden>
-        </label>
-      </div>
-
-      <div class="safe-box">
-        <i class="fa-solid fa-lock"></i>
-        <div>
-          <strong>Tus documentos están seguros</strong>
-          <p>Solo se usan para verificar tu cuenta.</p>
-        </div>
-      </div>
-
-      <button type="button" class="continue-btn">Continuar →</button>
-    </form>
-
+    <button class="continue">Continuar →</button>
   </div>
 </section>
 
 <script>
-function abrirRegistro(tipo) {
+function ocultar() {
   document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-
-  if (tipo === "cliente") {
-    document.getElementById("registroCliente").classList.add("active");
-  }
-
-  if (tipo === "repartidor") {
-    document.getElementById("registroRepartidor").classList.add("active");
-  }
 }
-
 function volverInicio() {
-  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  ocultar();
   document.getElementById("inicio").classList.add("active");
+}
+function abrirCliente() {
+  ocultar();
+  document.getElementById("registroCliente").classList.add("active");
+}
+function abrirRepartidor() {
+  ocultar();
+  document.getElementById("registroRepartidorDatos").classList.add("active");
+}
+function abrirDocsRepartidor() {
+  ocultar();
+  document.getElementById("registroRepartidorDocs").classList.add("active");
 }
 </script>
 
