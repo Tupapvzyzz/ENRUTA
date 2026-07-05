@@ -130,12 +130,15 @@ body {
 }
 
 /* TOP */
-.top {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 26px;
+..top{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin-top:28px;
+    margin-bottom:35px;
+}
 }
 
 .top button {
