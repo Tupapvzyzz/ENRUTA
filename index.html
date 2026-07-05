@@ -3,122 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ENRUTA | Entregas que te mueven</title>
+  <title>ENRUTA</title>
 
-  <link rel="icon" href="assets/icons/icono-enruta.png" />
   <link rel="stylesheet" href="enruta.css" />
-  <script src="enruta.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
 
-  <main class="app">
+<!-- INICIO -->
+<section id="inicio" class="screen active">
+  <div class="inicio-box">
+    <h1>ENRUTA</h1>
+    <p>Entregas que te mueven</p>
 
-    <!-- SPLASH / PORTADA -->
-    <section class="screen active" id="screenSplash">
-      <div class="splash">
-        <img src="assets/images/splash-enruta.png" alt="ENRUTA portada" class="splash-img">
+    <button class="main-btn" onclick="abrirRegistro('cliente')">
+      <i class="fa-solid fa-user"></i>
+      Soy Cliente
+    </button>
 
-        <div class="splash-actions">
-          <button class="btn primary" onclick="showScreen('screenClienteRegistro')">
-            <img src="assets/icons/usuario.svg" alt="">
-            Soy Cliente
-          </button>
+    <button class="outline-btn" onclick="abrirRegistro('repartidor')">
+      <i class="fa-solid fa-motorcycle"></i>
+      Soy Repartidor
+    </button>
+  </div>
+</section>
 
-          <button class="btn outline" onclick="showScreen('screenRepartidorRegistro')">
-            <img src="assets/icons/moto.svg" alt="">
-            Soy Repartidor
-          </button>
+<!-- REGISTRO CLIENTE -->
+<section id="registroCliente" class="screen">
+  <div class="registro-card">
 
-          <p>¿Ya tienes cuenta? <span onclick="showScreen('screenClientePedido')">Iniciar sesión</span></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- REGISTRO CLIENTE -->
-   <section class="register-screen">
-
-  <div class="register-phone">
-
-    <div class="register-header">
-      <button class="back-btn">←</button>
+    <div class="top">
+      <button class="back-btn" onclick="volverInicio()">←</button>
       <h2>Registro de Cliente</h2>
     </div>
 
     <div class="steps">
-      <div class="step active">1</div>
-      <div class="line active"></div>
-      <div class="step">2</div>
-      <div class="line"></div>
-      <div class="step">3</div>
+      <span class="step active">1</span>
+      <span class="line active"></span>
+      <span class="step">2</span>
+      <span class="line"></span>
+      <span class="step">3</span>
     </div>
 
-    <div class="step-labels">
-      <span>Datos personales</span>
+    <div class="labels">
+      <span class="active">Datos personales</span>
       <span>Verificación</span>
       <span>¡Listo!</span>
     </div>
 
-    <div class="register-intro">
-      <div class="avatar-icon">
-        <i class="fa-solid fa-user"></i>
-      </div>
-
+    <div class="intro">
+      <div class="avatar"><i class="fa-solid fa-user"></i></div>
       <div>
         <h3>Crea tu cuenta en Enruta</h3>
         <p>Completa tus datos para empezar a publicar pedidos de entrega.</p>
       </div>
     </div>
 
-    <form class="register-form">
-
+    <form class="formulario">
       <div class="input-row">
-        <div class="input-icon">
-          <i class="fa-regular fa-user"></i>
-        </div>
-        <div class="input-box">
+        <i class="fa-regular fa-user"></i>
+        <div>
           <label>Nombres completos</label>
           <input type="text" placeholder="Ej. Luis Alberto">
         </div>
       </div>
 
       <div class="input-row">
-        <div class="input-icon">
-          <i class="fa-regular fa-id-card"></i>
-        </div>
-        <div class="input-box">
+        <i class="fa-regular fa-id-card"></i>
+        <div>
           <label>DNI</label>
-          <input type="text" placeholder="Ingresa tu número de DNI">
+          <input type="text" placeholder="Ingresa tu DNI">
         </div>
       </div>
 
       <div class="input-row">
-        <div class="input-icon">
-          <i class="fa-regular fa-envelope"></i>
-        </div>
-        <div class="input-box">
+        <i class="fa-regular fa-envelope"></i>
+        <div>
           <label>Correo electrónico</label>
           <input type="email" placeholder="ejemplo@correo.com">
         </div>
       </div>
 
       <div class="input-row">
-        <div class="input-icon">
-          <i class="fa-solid fa-phone"></i>
-        </div>
-        <div class="input-box">
+        <i class="fa-solid fa-phone"></i>
+        <div>
           <label>Número de celular</label>
           <input type="tel" placeholder="912 345 678">
         </div>
       </div>
 
       <div class="input-row">
-        <div class="input-icon">
-          <i class="fa-solid fa-location-dot"></i>
-        </div>
-        <div class="input-box">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
           <label>Dirección de referencia</label>
-          <input type="text" placeholder="Ej. Av. Arequipa 1234, Lince">
+          <input type="text" placeholder="Ej. Av. Arequipa 1234">
         </div>
       </div>
 
@@ -126,188 +105,146 @@
         <i class="fa-solid fa-shield-halved"></i>
         <div>
           <strong>Tu información está protegida</strong>
-          <p>En Enruta cuidamos tus datos y nunca los compartimos con terceros.</p>
+          <p>En Enruta cuidamos tus datos.</p>
         </div>
       </div>
 
-      <button class="continue-btn" type="button">
-        Continuar <span>→</span>
-      </button>
-
-      <p class="login-text">
-        ¿Ya tienes cuenta? <a>Inicia sesión</a>
-      </p>
-
+      <button type="button" class="continue-btn">Continuar →</button>
     </form>
 
   </div>
-
 </section>
-    <!-- REGISTRO REPARTIDOR -->
-    <section class="screen" id="screenRepartidorRegistro">
-      <header class="topbar">
-        <button onclick="showScreen('screenSplash')">←</button>
-        <h2>Registro Repartidor</h2>
-      </header>
 
-      <div class="card">
-        <img src="assets/images/registro-repartidor.png" class="preview-img" alt="Registro repartidor">
+<!-- REGISTRO REPARTIDOR -->
+<section id="registroRepartidor" class="screen">
+  <div class="registro-card repartidor-bg">
+
+    <div class="top">
+      <button class="back-btn" onclick="volverInicio()">←</button>
+      <h2>Registro Repartidor</h2>
+    </div>
+
+    <div class="steps">
+      <span class="step active">1</span>
+      <span class="line active"></span>
+      <span class="step active">2</span>
+      <span class="line"></span>
+      <span class="step">3</span>
+    </div>
+
+    <div class="labels">
+      <span class="active">Datos personales</span>
+      <span class="active">Documentos</span>
+      <span>Verificación</span>
+    </div>
+
+    <div class="intro">
+      <div class="avatar"><i class="fa-solid fa-file-shield"></i></div>
+      <div>
+        <h3>Sube tus documentos</h3>
+        <p>Todos los documentos son obligatorios para comenzar a recibir pedidos.</p>
       </div>
+    </div>
 
-      <form class="form" onsubmit="event.preventDefault(); showScreen('screenListaPedidos')">
-        <label>Nombres completos</label>
-        <input type="text" placeholder="Ej. Carlos Ramírez" required>
+    <form class="formulario">
 
-        <label>DNI</label>
-        <input type="text" placeholder="Número de DNI" required>
-
-        <label>Licencia de conducir</label>
-        <input type="file" required>
-
-        <label>SOAT vigente</label>
-        <input type="file" required>
-
-        <label>Tarjeta de propiedad</label>
-        <input type="file" required>
-
-        <label>Foto de la moto</label>
-        <input type="file" required>
-
-        <button class="btn primary">Enviar documentos</button>
-      </form>
-    </section>
-<img src="assets/icons/usuario.svg" alt="">
-<img src="assets/icons/dni.svg" alt="">
-<img src="assets/icons/correo.svg" alt="">
-<img src="assets/icons/telefono.svg" alt="">
-    <!-- CLIENTE PUBLICA PEDIDO -->
-    <section class="screen" id="screenClientePedido">
-      <header class="topbar">
-        <button onclick="showScreen('screenSplash')">←</button>
-        <h2>Publicar pedido</h2>
-      </header>
-
-      <div class="card">
-        <img src="assets/images/pantalla-publicar-pedido.png" class="preview-img" alt="Publicar pedido">
-      </div>
-
-      <form class="form" onsubmit="event.preventDefault(); publicarPedido()">
-        <label>Dirección de origen</label>
-        <input id="origen" type="text" value="Jesús María" required>
-
-        <label>Dirección de destino</label>
-        <input id="destino" type="text" value="Lince" required>
-
-        <label>Distancia estimada en km</label>
-        <input id="distancia" type="number" step="0.1" value="8.6" required oninput="calcularPedido()">
-
-        <label>Precio que ofreces</label>
-        <input id="precioCliente" type="number" step="0.10" value="15.00" required oninput="calcularPedido()">
-
-        <div class="resumen">
-          <div>
-            <span>Mínimo permitido</span>
-            <strong id="minimoPermitido">S/ 9.46</strong>
-          </div>
-
-          <div>
-            <span>Comisión ENRUTA 9%</span>
-            <strong id="comisionApp">S/ 1.35</strong>
-          </div>
-
-          <div>
-            <span>Repartidor recibirá</span>
-            <strong id="recibeRepartidor">S/ 13.65</strong>
-          </div>
-
-          <div>
-            <span>Total a pagar</span>
-            <strong id="totalCliente">S/ 15.00</strong>
-          </div>
+      <div class="doc-row">
+        <i class="fa-regular fa-id-card"></i>
+        <div>
+          <strong>DNI</strong>
+          <p>Foto o escaneo de tu DNI</p>
+          <span>Obligatorio</span>
         </div>
-
-        <button class="btn primary">Publicar pedido</button>
-      </form>
-    </section>
-
-    <!-- REPARTIDOR LISTA PEDIDOS -->
-    <section class="screen" id="screenListaPedidos">
-      <header class="topbar">
-        <button onclick="showScreen('screenSplash')">☰</button>
-        <h2>Pedidos disponibles</h2>
-        <img src="assets/icons/campana.svg" class="mini-icon" alt="">
-      </header>
-
-      <div class="card">
-        <img src="assets/images/pantalla-lista-pedidos.png" class="preview-img" alt="Lista de pedidos">
+        <label class="upload-btn">
+          Subir
+          <input type="file" hidden>
+        </label>
       </div>
 
-      <div class="pedido-card">
-        <p><img src="assets/icons/ubicacion.svg" alt=""> 8.6 km</p>
-        <h3>Jesús María → Lince</h3>
-        <strong>S/ 15.00</strong>
-        <span>Pago para ti: S/ 13.65</span>
-        <button class="btn primary" onclick="showScreen('screenPedidoAceptado')">Rutear</button>
-      </div>
-    </section>
-
-    <!-- PEDIDO ACEPTADO -->
-    <section class="screen" id="screenPedidoAceptado">
-      <header class="topbar">
-        <button onclick="showScreen('screenListaPedidos')">←</button>
-        <h2>Pedido aceptado</h2>
-      </header>
-
-      <div class="card">
-        <img src="assets/images/pantalla-pedido-aceptado.png" class="preview-img" alt="Pedido aceptado">
+      <div class="doc-row">
+        <i class="fa-solid fa-id-card"></i>
+        <div>
+          <strong>Licencia</strong>
+          <p>Licencia de conducir vigente</p>
+          <span>Obligatorio</span>
+        </div>
+        <label class="upload-btn">
+          Subir
+          <input type="file" hidden>
+        </label>
       </div>
 
-      <button class="btn primary" onclick="showScreen('screenEnEntrega')">Iniciar entrega</button>
-    </section>
-
-    <!-- EN ENTREGA -->
-    <section class="screen" id="screenEnEntrega">
-      <header class="topbar">
-        <button onclick="showScreen('screenPedidoAceptado')">←</button>
-        <h2>En entrega</h2>
-      </header>
-
-      <div class="card">
-        <img src="assets/images/pantalla-en-entrega.png" class="preview-img" alt="En entrega">
+      <div class="doc-row">
+        <i class="fa-solid fa-motorcycle"></i>
+        <div>
+          <strong>Foto de la moto</strong>
+          <p>Foto clara de tu moto</p>
+          <span>Obligatorio</span>
+        </div>
+        <label class="upload-btn">
+          Subir
+          <input type="file" hidden>
+        </label>
       </div>
 
-      <button class="btn primary" onclick="showScreen('screenHistorial')">Pedido entregado</button>
-    </section>
-
-    <!-- HISTORIAL -->
-    <section class="screen" id="screenHistorial">
-      <header class="topbar">
-        <button onclick="showScreen('screenEnEntrega')">←</button>
-        <h2>Historial</h2>
-      </header>
-
-      <div class="card">
-        <img src="assets/images/pantalla-historial.png" class="preview-img" alt="Historial">
+      <div class="doc-row">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+          <strong>SOAT vigente</strong>
+          <p>SOAT actual y vigente</p>
+          <span>Obligatorio</span>
+        </div>
+        <label class="upload-btn">
+          Subir
+          <input type="file" hidden>
+        </label>
       </div>
 
-      <button class="btn outline" onclick="showScreen('screenPerfilRepartidor')">Ver perfil repartidor</button>
-    </section>
-
-    <!-- PERFIL REPARTIDOR -->
-    <section class="screen" id="screenPerfilRepartidor">
-      <header class="topbar">
-        <button onclick="showScreen('screenHistorial')">←</button>
-        <h2>Mi perfil</h2>
-      </header>
-
-      <div class="card">
-        <img src="assets/images/perfil-repartidor.png" class="preview-img" alt="Perfil repartidor">
+      <div class="doc-row">
+        <i class="fa-regular fa-file-lines"></i>
+        <div>
+          <strong>Tarjeta propiedad</strong>
+          <p>Foto o escaneo de la tarjeta</p>
+          <span>Obligatorio</span>
+        </div>
+        <label class="upload-btn">
+          Subir
+          <input type="file" hidden>
+        </label>
       </div>
 
-      <button class="btn outline" onclick="showScreen('screenSplash')">Cerrar sesión</button>
-    </section>
+      <div class="safe-box">
+        <i class="fa-solid fa-lock"></i>
+        <div>
+          <strong>Tus documentos están seguros</strong>
+          <p>Solo se usan para verificar tu cuenta.</p>
+        </div>
+      </div>
 
-  </main>
+      <button type="button" class="continue-btn">Continuar →</button>
+    </form>
+
+  </div>
+</section>
+
+<script>
+function abrirRegistro(tipo) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+
+  if (tipo === "cliente") {
+    document.getElementById("registroCliente").classList.add("active");
+  }
+
+  if (tipo === "repartidor") {
+    document.getElementById("registroRepartidor").classList.add("active");
+  }
+}
+
+function volverInicio() {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById("inicio").classList.add("active");
+}
+</script>
 
 </body>
 </html>
