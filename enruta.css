@@ -22,11 +22,14 @@ body {
   display: flex;
 }
 
-.inicio-box {
+ .inicio-box {
   width: 100%;
   max-width: 430px;
   min-height: 820px;
-  background: #05090d;
+  background-image: url("assets/imagen/portada-enruta.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 34px;
   padding: 60px 28px;
   text-align: center;
