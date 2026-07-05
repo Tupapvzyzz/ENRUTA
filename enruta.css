@@ -8,14 +8,16 @@ body {
   background: #020509;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .screen {
   display: none;
   min-height: 100vh;
   justify-content: center;
-  align-items: flex-start;
-  padding: 20px 12px;
+  align-items: center;
+  padding: 18px 12px;
 }
 
 .screen.active {
@@ -25,26 +27,40 @@ body {
 .phone {
   width: 100%;
   max-width: 430px;
-  min-height: 850px;
-  border-radius: 34px;
-  border: 1px solid #252d36;
+  height: 850px;
+  position: relative;
   overflow: hidden;
-  padding: 24px 22px;
-  box-shadow: 0 0 45px rgba(0,0,0,.8);
+  border-radius: 34px;
+  border: 1px solid #27313a;
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.85);
 }
 
+/* PORTADA */
 .splash-bg {
-  background-image: url("./assets/imagen/splash-enruta.png");
+  background-image: url("assets/images/splash-enruta.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
+.splash-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.05),
+    rgba(0,0,0,.25),
+    rgba(0,0,0,.85)
+  );
+}
+
 .inicio-actions {
   position: absolute;
-  left: 28px;
-  right: 28px;
-  bottom: 50px;
+  left: 22px;
+  right: 22px;
+  bottom: 42px;
+  z-index: 2;
 }
 
 .btn {
@@ -53,7 +69,7 @@ body {
   border-radius: 16px;
   font-size: 20px;
   font-weight: 900;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   cursor: pointer;
 }
 
@@ -68,41 +84,58 @@ body {
 }
 
 .borde {
-  background: rgba(0,0,0,.45);
+  background: rgba(0,0,0,.48);
   border: 2px solid #52e600;
   color: white;
 }
 
-.inicio-actions p,
-.login-text {
+.inicio-actions p {
   text-align: center;
   font-size: 14px;
   color: white;
 }
 
-.inicio-actions span,
-.login-text span {
+.inicio-actions span {
   color: #52e600;
-  font-weight: 800;
+  font-weight: 900;
 }
 
-.card {
-  background: linear-gradient(180deg, #050b10, #020406);
-}
-
-.repartidor-bg {
-  background-image: url("assets/imagen/registro-repartidor.png");
+/* FONDOS FORMULARIOS */
+.form-bg {
+  padding: 24px 22px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
+.cliente-bg {
+  background-image: url("assets/images/registro-cliente.png");
+}
+
+.repartidor-bg {
+  background-image: url("assets/images/registro-repartidor.png");
+}
+
+.form-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.76);
+  z-index: 0;
+}
+
+.form-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* TOP */
 .top {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: 26px;
 }
 
 .top button {
@@ -120,6 +153,7 @@ body {
   font-weight: 900;
 }
 
+/* STEPS */
 .steps {
   display: flex;
   align-items: center;
@@ -157,62 +191,63 @@ body {
   justify-content: space-between;
   font-size: 12px;
   color: #aaa;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
 }
 
 .labels b {
   color: #52e600;
-  font-weight: 800;
 }
 
 .labels p {
   color: #aaa;
 }
 
+/* INTRO */
 .intro {
   display: flex;
-  gap: 16px;
+  gap: 15px;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .circle {
-  width: 66px;
-  height: 66px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   border: 2px solid #27313a;
   color: #52e600;
-  background: rgba(255,255,255,.04);
+  background: rgba(255,255,255,.06);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .intro h3 {
-  font-size: 19px;
-  margin-bottom: 8px;
+  font-size: 18px;
+  margin-bottom: 6px;
 }
 
 .intro p {
-  color: #c4c4c4;
   font-size: 14px;
   line-height: 1.4;
+  color: #cfcfcf;
 }
 
+/* INPUTS */
 .input-row {
   display: grid;
   grid-template-columns: 48px 1fr;
   gap: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
   align-items: end;
 }
 
 .input-row > i {
   height: 48px;
-  border-radius: 11px;
-  background: #101820;
-  border: 1px solid #1f2933;
+  border-radius: 12px;
+  background: rgba(16,24,32,.92);
+  border: 1px solid #24313d;
   color: #52e600;
   display: flex;
   align-items: center;
@@ -223,17 +258,17 @@ body {
 label {
   display: block;
   font-size: 13px;
-  color: #ddd;
+  color: #e8e8e8;
   margin-bottom: 6px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 input {
   width: 100%;
   height: 48px;
-  border-radius: 11px;
-  border: 1px solid #1f2933;
-  background: #101820;
+  border-radius: 12px;
+  border: 1px solid #24313d;
+  background: rgba(16,24,32,.92);
   color: white;
   padding: 0 14px;
   outline: none;
@@ -243,12 +278,13 @@ input:focus {
   border-color: #52e600;
 }
 
+/* SEGURIDAD */
 .safe {
   display: flex;
   gap: 14px;
   align-items: center;
-  background: #101820;
-  border: 1px solid #1f2933;
+  background: rgba(16,24,32,.92);
+  border: 1px solid #24313d;
   border-radius: 14px;
   padding: 14px;
   margin: 18px 0;
@@ -256,7 +292,7 @@ input:focus {
 
 .safe i {
   color: #52e600;
-  font-size: 26px;
+  font-size: 25px;
 }
 
 .safe strong {
@@ -269,11 +305,12 @@ input:focus {
   margin-top: 4px;
 }
 
+/* BOTON CONTINUAR */
 .continue {
   width: 100%;
   height: 52px;
   border: none;
-  border-radius: 12px;
+  border-radius: 13px;
   background: linear-gradient(90deg, #43d900, #63ff00);
   color: white;
   font-size: 17px;
@@ -281,22 +318,23 @@ input:focus {
   cursor: pointer;
 }
 
+/* DOCUMENTOS */
 .doc {
   display: grid;
   grid-template-columns: 50px 1fr 78px;
   gap: 12px;
   align-items: center;
-  background: #101820;
-  border: 1px solid #1f2933;
+  background: rgba(16,24,32,.92);
+  border: 1px solid #24313d;
   border-radius: 14px;
-  padding: 12px;
-  margin-bottom: 12px;
+  padding: 11px;
+  margin-bottom: 11px;
 }
 
 .doc > i {
   width: 50px;
   height: 50px;
-  border-radius: 11px;
+  border-radius: 12px;
   background: #121b23;
   border: 1px solid #26323d;
   color: #52e600;
@@ -317,8 +355,8 @@ input:focus {
 }
 
 .doc label {
-  height: 56px;
-  border: 1px dashed #3a444d;
+  height: 54px;
+  border: 1px dashed #52e600;
   border-radius: 11px;
   color: #52e600;
   display: flex;
