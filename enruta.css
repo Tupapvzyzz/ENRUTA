@@ -34,11 +34,10 @@ body {
 }
 
 .splash-bg {
-  background-image: url("assets/imagen/splash-enruta.png");
+  background-image: url("./assets/imagen/splash-enruta.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
 }
 
 .inicio-actions {
