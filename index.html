@@ -36,33 +36,113 @@
     </section>
 
     <!-- REGISTRO CLIENTE -->
-    <section class="screen" id="screenClienteRegistro">
-      <header class="topbar">
-        <button onclick="showScreen('screenSplash')">←</button>
-        <h2>Registro Cliente</h2>
-      </header>
+   <section class="register-screen">
 
-      <div class="card">
-        <img src="assets/images/registro-cliente.png" class="preview-img" alt="Registro cliente">
+  <div class="register-phone">
+
+    <div class="register-header">
+      <button class="back-btn">←</button>
+      <h2>Registro de Cliente</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step active">1</div>
+      <div class="line active"></div>
+      <div class="step">2</div>
+      <div class="line"></div>
+      <div class="step">3</div>
+    </div>
+
+    <div class="step-labels">
+      <span>Datos personales</span>
+      <span>Verificación</span>
+      <span>¡Listo!</span>
+    </div>
+
+    <div class="register-intro">
+      <div class="avatar-icon">
+        <i class="fa-solid fa-user"></i>
       </div>
 
-      <form class="form" onsubmit="event.preventDefault(); showScreen('screenClientePedido')">
-        <label>Nombres completos</label>
-        <input type="text" placeholder="Ej. Luis Alberto" required>
+      <div>
+        <h3>Crea tu cuenta en Enruta</h3>
+        <p>Completa tus datos para empezar a publicar pedidos de entrega.</p>
+      </div>
+    </div>
 
-        <label>DNI</label>
-        <input type="text" placeholder="Ej. 76543210" required>
+    <form class="register-form">
 
-        <label>Correo electrónico</label>
-        <input type="email" placeholder="ejemplo@correo.com" required>
+      <div class="input-row">
+        <div class="input-icon">
+          <i class="fa-regular fa-user"></i>
+        </div>
+        <div class="input-box">
+          <label>Nombres completos</label>
+          <input type="text" placeholder="Ej. Luis Alberto">
+        </div>
+      </div>
 
-        <label>Celular</label>
-        <input type="tel" placeholder="987 654 321" required>
+      <div class="input-row">
+        <div class="input-icon">
+          <i class="fa-regular fa-id-card"></i>
+        </div>
+        <div class="input-box">
+          <label>DNI</label>
+          <input type="text" placeholder="Ingresa tu número de DNI">
+        </div>
+      </div>
 
-        <button class="btn primary">Continuar</button>
-      </form>
-    </section>
+      <div class="input-row">
+        <div class="input-icon">
+          <i class="fa-regular fa-envelope"></i>
+        </div>
+        <div class="input-box">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="ejemplo@correo.com">
+        </div>
+      </div>
 
+      <div class="input-row">
+        <div class="input-icon">
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <div class="input-box">
+          <label>Número de celular</label>
+          <input type="tel" placeholder="912 345 678">
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-icon">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="input-box">
+          <label>Dirección de referencia</label>
+          <input type="text" placeholder="Ej. Av. Arequipa 1234, Lince">
+        </div>
+      </div>
+
+      <div class="safe-box">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+          <strong>Tu información está protegida</strong>
+          <p>En Enruta cuidamos tus datos y nunca los compartimos con terceros.</p>
+        </div>
+      </div>
+
+      <button class="continue-btn" type="button">
+        Continuar <span>→</span>
+      </button>
+
+      <p class="login-text">
+        ¿Ya tienes cuenta? <a>Inicia sesión</a>
+      </p>
+
+    </form>
+
+  </div>
+
+</section>
     <!-- REGISTRO REPARTIDOR -->
     <section class="screen" id="screenRepartidorRegistro">
       <header class="topbar">
