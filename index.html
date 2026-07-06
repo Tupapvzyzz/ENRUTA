@@ -120,23 +120,65 @@
 </section>
 
 <!-- CLIENTE PASO 3 -->
-<section id="clienteListo" class="screen">
-  <div class="phone card center-content">
+<!-- HOME CLIENTE -->
+<section id="homeCliente" class="screen">
+  <div class="phone card">
 
-    <div class="steps">
-      <span class="active">1</span><div class="line active"></div>
-      <span class="active">2</span><div class="line active"></div>
-      <span class="active">3</span>
+    <div class="home-top">
+      <div>
+        <h2>Hola, cliente 👋</h2>
+        <p>¿Qué deseas enviar hoy?</p>
+      </div>
+      <i class="fa-solid fa-user-circle"></i>
     </div>
 
-    <div class="success-icon">
-      <i class="fa-solid fa-check"></i>
+    <div class="input-row">
+      <i class="fa-solid fa-location-dot"></i>
+      <div>
+        <label>Punto de recojo</label>
+        <input id="origenPedido" placeholder="Ej. Jesús María">
+      </div>
     </div>
 
-    <h2>¡Cuenta creada!</h2>
-    <p class="success-text">Bienvenido a ENRUTA. Ya puedes publicar tu primer pedido.</p>
+    <div class="input-row">
+      <i class="fa-solid fa-flag-checkered"></i>
+      <div>
+        <label>Punto de entrega</label>
+        <input id="destinoPedido" placeholder="Ej. Miraflores">
+      </div>
+    </div>
 
-    <button class="continue" onclick="volverInicio()">Ir al inicio →</button>
+    <div class="input-row">
+      <i class="fa-solid fa-box"></i>
+      <div>
+        <label>Tipo de paquete</label>
+        <input id="tipoPaquete" placeholder="Documento, comida, repuesto...">
+      </div>
+    </div>
+
+    <div class="input-row">
+      <i class="fa-solid fa-route"></i>
+      <div>
+        <label>Distancia en km</label>
+        <input id="kmPedido" type="number" placeholder="Ej. 5.8" oninput="calcularPrecio()">
+      </div>
+    </div>
+
+    <div class="price-card">
+      <p>Precio estimado</p>
+      <h1 id="precioPedido">S/ 0.00</h1>
+      <small>Tarifa: S/ 1.10 por kilómetro</small>
+    </div>
+
+    <button class="continue" onclick="publicarPedido()">Rutear →</button>
+
+    <div id="pedidoPublicado" class="pedido-ok hidden">
+      <i class="fa-solid fa-check-circle"></i>
+      <div>
+        <strong>Pedido publicado</strong>
+        <p>Los repartidores ya pueden verlo.</p>
+      </div>
+    </div>
 
   </div>
 </section>
