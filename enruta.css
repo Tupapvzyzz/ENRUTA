@@ -976,3 +976,60 @@ input:focus {
     top: 26px;
   }
 }
+.codigo-box{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:45px 0;
+
+}
+
+.codigo-box input{
+
+    width:48px;
+
+    height:60px;
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    border-radius:12px;
+
+    background:#101820;
+
+    border:1px solid #25303a;
+
+    color:white;
+
+}
+
+.codigo-box input:focus{
+
+    border-color:#52e600;
+
+}
+
+.reenviar{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+    color:#cfcfcf;
+
+}
+
+.reenviar span{
+
+    color:#52e600;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
