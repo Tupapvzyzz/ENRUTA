@@ -1,7 +1,17 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#020509;font-family:Arial,Helvetica,sans-serif;color:white}
-.screen{display:none;min-height:100vh;justify-content:center;align-items:flex-start;padding:20px 12px}
-.screen.active{display:flex}
+.screen{
+    display:none;
+    min-height:100vh;
+    justify-content:center;
+    align-items:center;
+    background:#020509;
+    padding:20px;
+}
+
+.screen.active{
+    display:flex;
+}
 .phone{width:100%;max-width:430px;min-height:850px;border-radius:34px;border:1px solid #252d36;overflow:hidden;padding:24px 22px;box-shadow:0 0 45px rgba(0,0,0,.8)}
 .splash-bg{background-image:url('./assets/imagen/splash-enruta.png');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;padding:0}
 .repartidor-bg{background-image:url('./assets/imagen/registro-repartidor.png');background-size:cover;background-position:center;background-repeat:no-repeat}
