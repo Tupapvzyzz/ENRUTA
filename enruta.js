@@ -47,6 +47,25 @@ function abrirConfirmarPedido() {
   document.getElementById("resumenPeso").textContent = peso;
   document.getElementById("resumenDistancia").textContent = distanciaKm + " km";
   document.getElementById("resumenPrecio").textContent = "S/ " + precio;
+  function abrirVerificacionCliente(){
+
+    ocultar();
+
+    document
+        .getElementById("registroClienteVerificacion")
+        .classList.add("active");
+
+}
+
+function abrirClienteListo(){
+
+    ocultar();
+
+    document
+        .getElementById("registroClienteListo")
+        .classList.add("active");
+
+}
 
   mostrar("confirmarPedido");
 }
