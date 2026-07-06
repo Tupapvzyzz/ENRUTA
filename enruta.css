@@ -117,3 +117,20 @@ label{display:block;font-size:13px;color:#ddd;margin-bottom:6px;font-weight:700}
 .route-info small {
   color: #9ca3af;
 }
+.phone::-webkit-scrollbar {
+  width: 6px;
+}
+
+.phone::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.phone::-webkit-scrollbar-thumb {
+  background: #52e600;
+  border-radius: 20px;
+}
+
+.phone {
+  scrollbar-width: thin;
+  scrollbar-color: #52e600 transparent;
+}
