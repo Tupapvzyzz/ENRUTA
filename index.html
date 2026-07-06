@@ -1,280 +1,879 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ENRUTA</title>
-  <link rel="stylesheet" href="enruta.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ENRUTA</title>
+
+<link rel="stylesheet" href="enruta.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
+
 <body>
 
 <main id="app">
 
-  <!-- INICIO -->
-  <section id="inicio" class="screen active">
-    <div class="phone splash-bg">
-      <div class="inicio-actions">
-        <button class="btn primary" onclick="showScreen('clienteDatos')">
-          <i class="fa-solid fa-user"></i> Soy Cliente
-        </button>
+<!-- =======================
+SPLASH
+======================= -->
 
-        <button class="btn outline" onclick="showScreen('repartidorDatos')">
-          <i class="fa-solid fa-motorcycle"></i> Soy Repartidor
-        </button>
+<section id="inicio" class="screen active">
 
-        <p class="link-text">
-          ¿Ya tienes cuenta?
-          <span onclick="showScreen('loginTipo')">Iniciar sesión</span>
-        </p>
-      </div>
-    </div>
-  </section>
+<div class="phone splash-bg">
 
-  <!-- LOGIN TIPO -->
-  <section id="loginTipo" class="screen">
-    <div class="phone card center">
-      <h2>Iniciar sesión</h2>
-      <p class="success-text">Elige cómo quieres entrar a ENRUTA.</p>
+<div class="inicio-actions">
 
-      <button class="btn primary" onclick="showScreen('homeCliente')">
-        <i class="fa-solid fa-user"></i> Entrar como Cliente
-      </button>
+<button class="btn primary"
+onclick="showScreen('clienteDatos')">
 
-      <button class="btn outline" onclick="showScreen('homeRepartidor')">
-        <i class="fa-solid fa-motorcycle"></i> Entrar como Repartidor
-      </button>
+<i class="fa-solid fa-user"></i>
 
-      <button class="continue" onclick="showScreen('inicio')">Volver</button>
-    </div>
-  </section>
+Soy Cliente
 
-  <!-- CLIENTE DATOS -->
-  <section id="clienteDatos" class="screen">
-    <div class="phone card">
-      <div class="top">
-        <button onclick="showScreen('inicio')">←</button>
-        <h2>Registro Cliente</h2>
-      </div>
+</button>
 
-      <div class="steps">
-        <span class="active">1</span><div class="line active"></div>
-        <span>2</span><div class="line"></div>
-        <span>3</span>
-      </div>
+<button class="btn outline"
+onclick="showScreen('repartidorDatos')">
 
-      <div class="labels">
-        <b>Datos personales</b>
-        <p>Verificación</p>
-        <p>¡Listo!</p>
-      </div>
+<i class="fa-solid fa-motorcycle"></i>
 
-      <div class="intro">
-        <div class="circle"><i class="fa-solid fa-user"></i></div>
-        <div>
-          <h3>Crea tu cuenta</h3>
-          <p>Completa tus datos para publicar pedidos.</p>
-        </div>
-      </div>
+Soy Repartidor
 
-      <div class="input-row"><i class="fa-regular fa-user"></i><div><label>Nombres completos</label><input id="clienteNombre" placeholder="Ej. Luis Alberto"></div></div>
-      <div class="input-row"><i class="fa-regular fa-id-card"></i><div><label>DNI</label><input id="clienteDni" placeholder="Ingresa tu DNI"></div></div>
-      <div class="input-row"><i class="fa-regular fa-envelope"></i><div><label>Correo electrónico</label><input id="clienteEmail" placeholder="ejemplo@correo.com"></div></div>
-      <div class="input-row"><i class="fa-solid fa-phone"></i><div><label>Número de celular</label><input id="clienteCelular" placeholder="912 345 678"></div></div>
-      <div class="input-row"><i class="fa-solid fa-location-dot"></i><div><label>Dirección de referencia</label><input id="clienteDireccion" placeholder="Ej. Av. Arequipa 1234"></div></div>
+</button>
 
-      <button class="continue" onclick="goClienteVerificacion()">Continuar →</button>
-    </div>
-  </section>
+<p class="link-text">
 
-  <!-- CLIENTE VERIFICACION -->
-  <section id="clienteVerificacion" class="screen">
-    <div class="phone card">
-      <div class="top">
-        <button onclick="showScreen('clienteDatos')">←</button>
-        <h2>Registro Cliente</h2>
-      </div>
+¿Ya tienes cuenta?
 
-      <div class="steps">
-        <span class="active">1</span><div class="line active"></div>
-        <span class="active">2</span><div class="line"></div>
-        <span>3</span>
-      </div>
+<span onclick="showScreen('loginTipo')">
 
-      <div class="labels">
-        <b>Datos</b>
-        <b>Verificación</b>
-        <p>¡Listo!</p>
-      </div>
+Iniciar sesión
 
-      <div class="intro">
-        <div class="circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
-        <div>
-          <h3>Verifica tu número</h3>
-          <p>Ingresa el código de 6 dígitos.</p>
-        </div>
-      </div>
+</span>
 
-      <div class="codigo-box">
-        <input maxlength="1">
-        <input maxlength="1">
-        <input maxlength="1">
-        <input maxlength="1">
-        <input maxlength="1">
-        <input maxlength="1">
-      </div>
+</p>
 
-      <button class="continue" onclick="showScreen('clienteListo')">Verificar →</button>
-    </div>
-  </section>
+</div>
 
-  <!-- CLIENTE LISTO -->
-  <section id="clienteListo" class="screen">
-    <div class="phone card center">
-      <div class="success-icon"><i class="fa-solid fa-check"></i></div>
-      <h2>¡Cuenta creada!</h2>
-      <p class="success-text">Ya puedes publicar tu primer pedido.</p>
-      <button class="continue" onclick="showScreen('homeCliente')">Ir al inicio →</button>
-    </div>
-  </section>
+</div>
 
-  <!-- REPARTIDOR DATOS -->
-  <section id="repartidorDatos" class="screen">
-    <div class="phone repartidor-bg">
-      <div class="top">
-        <button onclick="showScreen('inicio')">←</button>
-        <h2>Registro Repartidor</h2>
-      </div>
+</section>
 
-      <div class="steps">
-        <span class="active">1</span><div class="line"></div>
-        <span>2</span><div class="line"></div>
-        <span>3</span>
-      </div>
+<!-- =======================
+LOGIN
+======================= -->
 
-      <div class="labels">
-        <b>Datos personales</b>
-        <p>Documentos</p>
-        <p>Verificación</p>
-      </div>
+<section id="loginTipo" class="screen">
 
-      <div class="intro">
-        <div class="circle"><i class="fa-solid fa-motorcycle"></i></div>
-        <div>
-          <h3>Crea tu cuenta</h3>
-          <p>Completa tus datos personales.</p>
-        </div>
-      </div>
+<div class="phone card center">
 
-      <div class="input-row"><i class="fa-regular fa-user"></i><div><label>Nombres completos</label><input id="repNombre" placeholder="Ej. Luis Alberto"></div></div>
-      <div class="input-row"><i class="fa-regular fa-id-card"></i><div><label>DNI</label><input id="repDni" placeholder="Ingresa tu DNI"></div></div>
-      <div class="input-row"><i class="fa-regular fa-envelope"></i><div><label>Correo electrónico</label><input id="repEmail" placeholder="ejemplo@correo.com"></div></div>
-      <div class="input-row"><i class="fa-solid fa-phone"></i><div><label>Número de celular</label><input id="repCelular" placeholder="912 345 678"></div></div>
-      <div class="input-row"><i class="fa-solid fa-location-dot"></i><div><label>Dirección de referencia</label><input id="repDireccion" placeholder="Ej. Av. Arequipa 1234"></div></div>
+<h2>Iniciar sesión</h2>
 
-      <button class="continue" onclick="goRepartidorDocs()">Continuar →</button>
-    </div>
-  </section>
+<p class="success-text">
 
-  <!-- REPARTIDOR DOCS -->
-  <section id="repartidorDocs" class="screen">
-    <div class="phone repartidor-bg">
-      <div class="top">
-        <button onclick="showScreen('repartidorDatos')">←</button>
-        <h2>Registro Repartidor</h2>
-      </div>
+Selecciona cómo deseas ingresar.
 
-      <div class="steps">
-        <span class="active">1</span><div class="line active"></div>
-        <span class="active">2</span><div class="line"></div>
-        <span>3</span>
-      </div>
+</p>
 
-      <div class="labels">
-        <b>Datos</b>
-        <b>Documentos</b>
-        <p>Verificación</p>
-      </div>
+<button class="btn primary"
+onclick="showScreen('homeCliente')">
 
-      <div class="intro">
-        <div class="circle"><i class="fa-solid fa-file-shield"></i></div>
-        <div>
-          <h3>Sube tus documentos</h3>
-          <p>Todos son obligatorios.</p>
-        </div>
-      </div>
+<i class="fa-solid fa-user"></i>
 
-      <div class="doc"><i class="fa-regular fa-id-card"></i><div><strong>DNI</strong><p>Foto o escaneo</p></div><label>Subir<input type="file" hidden></label></div>
-      <div class="doc"><i class="fa-solid fa-id-card"></i><div><strong>Licencia</strong><p>Conducir vigente</p></div><label>Subir<input type="file" hidden></label></div>
-      <div class="doc"><i class="fa-solid fa-motorcycle"></i><div><strong>Foto de moto</strong><p>Foto clara</p></div><label>Subir<input type="file" hidden></label></div>
-      <div class="doc"><i class="fa-solid fa-shield-halved"></i><div><strong>SOAT</strong><p>Vigente</p></div><label>Subir<input type="file" hidden></label></div>
-      <div class="doc"><i class="fa-regular fa-file-lines"></i><div><strong>Tarjeta propiedad</strong><p>Foto o escaneo</p></div><label>Subir<input type="file" hidden></label></div>
+Cliente
 
-      <button class="continue" onclick="showScreen('repartidorListo')">Continuar →</button>
-    </div>
-  </section>
+</button>
 
-  <!-- REPARTIDOR LISTO -->
-  <section id="repartidorListo" class="screen">
-    <div class="phone card center">
-      <div class="success-icon"><i class="fa-solid fa-check"></i></div>
-      <h2>Documentos enviados</h2>
-      <p class="success-text">Estamos verificando tu información.</p>
-      <button class="continue" onclick="showScreen('homeRepartidor')">Entrar →</button>
-    </div>
-  </section>
+<button class="btn outline"
+onclick="showScreen('homeRepartidor')">
 
-  <!-- HOME CLIENTE -->
-  <section id="homeCliente" class="screen">
-    <div class="phone card">
-      <div class="home-top">
-        <div>
-          <h2>Hola, cliente 👋</h2>
-          <p>¿Qué deseas enviar hoy?</p>
-        </div>
-        <button class="icon-btn" onclick="showScreen('inicio')">
-          <i class="fa-solid fa-right-from-bracket"></i>
-        </button>
-      </div>
+<i class="fa-solid fa-motorcycle"></i>
 
-      <div class="input-row"><i class="fa-solid fa-location-dot"></i><div><label>Punto de recojo</label><input id="origenPedido" placeholder="Ej. Jesús María"></div></div>
-      <div class="input-row"><i class="fa-solid fa-flag-checkered"></i><div><label>Punto de entrega</label><input id="destinoPedido" placeholder="Ej. Miraflores"></div></div>
-      <div class="input-row"><i class="fa-solid fa-box"></i><div><label>Tipo de paquete</label><input id="tipoPaquete" placeholder="Documento, comida, repuesto..."></div></div>
-      <div class="input-row"><i class="fa-solid fa-route"></i><div><label>Distancia en km</label><input id="kmPedido" type="number" placeholder="Ej. 5.8" oninput="calcularPrecio()"></div></div>
+Repartidor
 
-      <div class="price-card">
-        <p>Precio del envío</p>
-        <h1 id="precioPedido">S/ 0.00</h1>
-        <small>Tarifa: S/ 1.10 por kilómetro</small>
-      </div>
+</button>
 
-      <button class="continue" onclick="publicarPedido()">Rutear →</button>
+<button class="continue"
+onclick="showScreen('inicio')">
 
-      <div class="mini-title">Mis pedidos</div>
-      <div id="clientePedidos" class="list"></div>
-    </div>
-  </section>
+Volver
 
-  <!-- HOME REPARTIDOR -->
-  <section id="homeRepartidor" class="screen">
-    <div class="phone card">
-      <div class="home-top">
-        <div>
-          <h2>Pedidos disponibles</h2>
-          <p>Elige un pedido para rutear</p>
-        </div>
-        <button class="icon-btn" onclick="showScreen('inicio')">
-          <i class="fa-solid fa-right-from-bracket"></i>
-        </button>
-      </div>
+</button>
 
-      <div id="repartidorPedidos" class="list"></div>
-    </div>
-  </section>
+</div>
+
+</section>
+
+<!-- =======================
+REGISTRO CLIENTE
+======================= -->
+
+<section id="clienteDatos"
+class="screen">
+
+<div class="phone card">
+
+<div class="top">
+
+<button onclick="showScreen('inicio')">
+
+←
+
+</button>
+
+<h2>Registro Cliente</h2>
+
+</div>
+
+<div class="steps">
+
+<span class="active">1</span>
+
+<div class="line active"></div>
+
+<span>2</span>
+
+<div class="line"></div>
+
+<span>3</span>
+
+</div>
+
+<div class="labels">
+
+<b>Datos</b>
+
+<p>Verificación</p>
+
+<p>Listo</p>
+
+</div>
+
+<div class="intro">
+
+<div class="circle">
+
+<i class="fa-solid fa-user"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Crear cuenta
+
+</h3>
+
+<p>
+
+Completa tus datos.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-regular fa-user"></i>
+
+<div>
+
+<label>Nombre</label>
+
+<input
+id="clienteNombre"
+placeholder="Nombre completo">
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-regular fa-id-card"></i>
+
+<div>
+
+<label>DNI</label>
+
+<input
+id="clienteDni"
+placeholder="DNI">
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-regular fa-envelope"></i>
+
+<div>
+
+<label>Correo</label>
+
+<input
+id="clienteEmail"
+placeholder="correo@correo.com">
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-solid fa-phone"></i>
+
+<div>
+
+<label>Celular</label>
+
+<input
+id="clienteCelular"
+placeholder="999999999">
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<div>
+
+<label>Dirección</label>
+
+<input
+id="clienteDireccion"
+placeholder="Dirección">
+
+</div>
+
+</div>
+
+<button
+class="continue"
+onclick="goClienteVerificacion()">
+
+Continuar →
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =======================
+VERIFICACION CLIENTE
+======================= -->
+
+<section
+id="clienteVerificacion"
+class="screen">
+
+<div class="phone card">
+
+<div class="top">
+
+<button
+onclick="showScreen('clienteDatos')">
+
+←
+
+</button>
+
+<h2>
+
+Verificación
+
+</h2>
+
+</div>
+
+<div class="steps">
+
+<span class="active">1</span>
+
+<div class="line active"></div>
+
+<span class="active">2</span>
+
+<div class="line"></div>
+
+<span>3</span>
+
+</div>
+
+<div class="codigo-box">
+
+<input maxlength="1">
+
+<input maxlength="1">
+
+<input maxlength="1">
+
+<input maxlength="1">
+
+<input maxlength="1">
+
+<input maxlength="1">
+
+</div>
+
+<button
+class="continue"
+onclick="showScreen('clienteListo')">
+
+Verificar →
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =======================
+CLIENTE LISTO
+======================= -->
+
+<section
+id="clienteListo"
+class="screen">
+
+<div class="phone card center">
+
+<div class="success-icon">
+
+<i class="fa-solid fa-check"></i>
+
+</div>
+
+<h2>
+
+¡Cuenta creada!
+
+</h2>
+
+<p class="success-text">
+
+Ya puedes publicar pedidos.
+
+</p>
+
+<button
+class="continue"
+onclick="showScreen('homeCliente')">
+
+Ir al inicio →
+
+</button>
+
+</div>
+
+</section>
+
+<!-- AQUÍ EMPIEZA
+REPARTIDOR -->
+  <!-- =======================
+REGISTRO REPARTIDOR
+======================= -->
+
+<section id="repartidorDatos" class="screen">
+
+<div class="phone repartidor-bg">
+
+<div class="top">
+
+<button onclick="showScreen('inicio')">
+←
+</button>
+
+<h2>Registro Repartidor</h2>
+
+</div>
+
+<div class="steps">
+
+<span class="active">1</span>
+
+<div class="line"></div>
+
+<span>2</span>
+
+<div class="line"></div>
+
+<span>3</span>
+
+</div>
+
+<div class="labels">
+
+<b>Datos</b>
+
+<p>Documentos</p>
+
+<p>Verificación</p>
+
+</div>
+
+<div class="intro">
+
+<div class="circle">
+
+<i class="fa-solid fa-motorcycle"></i>
+
+</div>
+
+<div>
+
+<h3>Crear cuenta</h3>
+
+<p>Completa tus datos de repartidor.</p>
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-regular fa-user"></i>
+
+<div>
+
+<label>Nombre</label>
+
+<input id="repNombre" placeholder="Nombre completo">
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-regular fa-id-card"></i>
+
+<div>
+
+<label>DNI</label>
+
+<input id="repDni" placeholder="DNI">
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-regular fa-envelope"></i>
+
+<div>
+
+<label>Correo</label>
+
+<input id="repEmail" placeholder="correo@correo.com">
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-solid fa-phone"></i>
+
+<div>
+
+<label>Celular</label>
+
+<input id="repCelular" placeholder="999999999">
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<div>
+
+<label>Dirección</label>
+
+<input id="repDireccion" placeholder="Dirección">
+
+</div>
+
+</div>
+
+<button class="continue" onclick="goRepartidorDocs()">
+Continuar →
+</button>
+
+</div>
+
+</section>
+
+<!-- =======================
+DOCUMENTOS REPARTIDOR
+======================= -->
+
+<section id="repartidorDocs" class="screen">
+
+<div class="phone repartidor-bg">
+
+<div class="top">
+
+<button onclick="showScreen('repartidorDatos')">
+←
+</button>
+
+<h2>Documentos</h2>
+
+</div>
+
+<div class="steps">
+
+<span class="active">1</span>
+
+<div class="line active"></div>
+
+<span class="active">2</span>
+
+<div class="line"></div>
+
+<span>3</span>
+
+</div>
+
+<div class="labels">
+
+<b>Datos</b>
+
+<b>Documentos</b>
+
+<p>Verificación</p>
+
+</div>
+
+<div class="intro">
+
+<div class="circle">
+
+<i class="fa-solid fa-file-shield"></i>
+
+</div>
+
+<div>
+
+<h3>Sube tus documentos</h3>
+
+<p>Todos son obligatorios.</p>
+
+</div>
+
+</div>
+
+<div class="doc">
+
+<i class="fa-regular fa-id-card"></i>
+
+<div>
+
+<strong>DNI</strong>
+
+<p>Foto o escaneo</p>
+
+</div>
+
+<label>
+Subir
+<input type="file" hidden>
+</label>
+
+</div>
+
+<div class="doc">
+
+<i class="fa-solid fa-id-card"></i>
+
+<div>
+
+<strong>Licencia</strong>
+
+<p>Conducir vigente</p>
+
+</div>
+
+<label>
+Subir
+<input type="file" hidden>
+</label>
+
+</div>
+
+<div class="doc">
+
+<i class="fa-solid fa-motorcycle"></i>
+
+<div>
+
+<strong>Foto de moto</strong>
+
+<p>Foto clara</p>
+
+</div>
+
+<label>
+Subir
+<input type="file" hidden>
+</label>
+
+</div>
+
+<div class="doc">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<div>
+
+<strong>SOAT</strong>
+
+<p>Vigente</p>
+
+</div>
+
+<label>
+Subir
+<input type="file" hidden>
+</label>
+
+</div>
+
+<div class="doc">
+
+<i class="fa-regular fa-file-lines"></i>
+
+<div>
+
+<strong>Tarjeta propiedad</strong>
+
+<p>Foto o escaneo</p>
+
+</div>
+
+<label>
+Subir
+<input type="file" hidden>
+</label>
+
+</div>
+
+<button class="continue" onclick="showScreen('repartidorListo')">
+Continuar →
+</button>
+
+</div>
+
+</section>
+
+<!-- =======================
+REPARTIDOR LISTO
+======================= -->
+
+<section id="repartidorListo" class="screen">
+
+<div class="phone card center">
+
+<div class="success-icon">
+
+<i class="fa-solid fa-check"></i>
+
+</div>
+
+<h2>Documentos enviados</h2>
+
+<p class="success-text">
+
+Estamos verificando tu información.
+
+</p>
+
+<button class="continue" onclick="showScreen('homeRepartidor')">
+Entrar →
+</button>
+
+</div>
+
+</section>
+
+<!-- AQUÍ EMPIEZA
+HOME CLIENTE CON MAPA -->
+  <!-- =======================
+HOME CLIENTE CON MAPA
+======================= -->
+
+<section id="homeCliente" class="screen">
+
+<div class="phone card">
+
+<div class="home-top">
+
+<div>
+
+<h2>Hola, cliente 👋</h2>
+
+<p>¿Qué deseas enviar hoy?</p>
+
+</div>
+
+<button class="icon-btn" onclick="showScreen('inicio')">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+</button>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<div>
+
+<label>Punto de recojo</label>
+
+<input
+id="origenPedido"
+placeholder="Ej. Av. Brasil 1200, Jesús María"
+onchange="calcularRutaReal()">
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-solid fa-flag-checkered"></i>
+
+<div>
+
+<label>Punto de entrega</label>
+
+<input
+id="destinoPedido"
+placeholder="Ej. Miraflores"
+onchange="calcularRutaReal()">
+
+</div>
+
+</div>
+
+<div class="input-row">
+
+<i class="fa-solid fa-box"></i>
+
+<div>
+
+<label>Tipo de paquete</label>
+
+<input
+id="tipoPaquete"
+placeholder="Documento, comida, repuesto...">
+
+</div>
+
+</div>
+
+<div id="mapaCliente"></div>
+
+<div class="route-info">
+
+<p>Distancia real</p>
+
+<h3 id="distanciaReal">0.00 km</h3>
+
+<small id="tiempoReal">Tiempo estimado: --</small>
+
+</div>
+
+<div class="price-card">
+
+<p>Precio del envío</p>
+
+<h1 id="precioPedido">S/ 0.00</h1>
+
+<small>Tarifa: S/ 1.10 por kilómetro</small>
+
+</div>
+
+<button class="continue" onclick="publicarPedido()">
+
+Rutear →
+
+</button>
+
+<div class="mini-title">
+
+Mis pedidos
+
+</div>
+
+<div id="clientePedidos" class="list"></div>
+
+</div>
+
+</section>
+
+<!-- AQUÍ EMPIEZA
+HOME REPARTIDOR -->
+  <!-- =======================
+HOME REPARTIDOR
+======================= -->
+
+<section id="homeRepartidor" class="screen">
+
+<div class="phone card">
+
+<div class="home-top">
+
+<div>
+
+<h2>Pedidos disponibles</h2>
+
+<p>Elige un pedido para rutear</p>
+
+</div>
+
+<button class="icon-btn" onclick="showScreen('inicio')">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+</button>
+
+</div>
+
+<div id="repartidorPedidos" class="list"></div>
+
+</div>
+
+</section>
 
 </main>
 
 <script src="enruta.js"></script>
+
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&libraries=places&callback=initMap">
+</script>
+
 </body>
 </html>
