@@ -315,3 +315,71 @@ function abrirHistorialRepartidor() {
     </div>
   `).join("");
 }
+function abrirPedidoCurso(){
+
+    const pedido=pedidos.find(p=>p.id===pedidoActual);
+
+    if(!pedido) return;
+
+    document.getElementById("cursoEstado").innerHTML=
+    "Estado: "+pedido.estado;
+
+    document.getElementById("cursoDetalle").innerHTML=`
+
+        <h3>${pedido.tipo}</h3>
+
+        <p><b>Recojo:</b> ${pedido.origen}</p>
+
+        <p><b>Entrega:</b> ${pedido.destino}</p>
+
+        <p><b>Precio:</b> S/ ${pedido.precio}</p>
+
+        <p><b>Ganancia:</b> S/ ${pedido.ganancia}</p>
+
+    `;
+
+    showScreen("pedidoCurso");
+
+}
+function cambiarEstadoPedido(estado){
+
+    pedidos=pedidos.map(p=>{
+
+        if(p.id===pedidoActual){
+
+            p.estado=estado;
+
+        }
+
+        return p;
+
+    });
+
+    localStorage.setItem("pedidosEnruta",JSON.stringify(pedidos));
+
+    abrirPedidoCurso();
+
+}
+function finalizarPedido(){
+
+    pedidos=pedidos.map(p=>{
+
+        if(p.id===pedidoActual){
+
+            p.estado="Entregado";
+
+        }
+
+        return p;
+
+    });
+
+    localStorage.setItem("pedidosEnruta",JSON.stringify(pedidos));
+
+    renderClientePedidos();
+
+    renderRepartidorPedidos();
+
+    abrirHistorialCliente();
+
+}
