@@ -4,162 +4,241 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ENRUTA</title>
+
   <link rel="stylesheet" href="enruta.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+
 <body>
 
-  <main class="app">
+<!-- INICIO -->
+<section id="inicio" class="screen active">
+  <div class="phone splash-bg">
 
-    <section id="pantallaInicio" class="screen active hero">
-      <div class="overlay"></div>
-
-      <div class="hero-content">
-        <img src="assets/splash-enruta.png" alt="ENRUTA" class="hero-img">
-
-        <h1>ENRUTA</h1>
-        <p>Entregas urbanas rápidas en moto</p>
-
-        <button onclick="mostrarPantalla('pantallaRol')" class="btn primary">
-          Empezar
-        </button>
-      </div>
-    </section>
-
-    <section id="pantallaRol" class="screen">
-      <h2>¿Cómo quieres ingresar?</h2>
-
-      <div class="cards">
-        <button class="card" onclick="seleccionarRol('cliente')">
-          <h3>Cliente</h3>
-          <p>Publica tu pedido y elige un repartidor.</p>
-        </button>
-
-        <button class="card" onclick="seleccionarRol('repartidor')">
-          <h3>Repartidor</h3>
-          <p>Recibe pedidos y genera ingresos en moto.</p>
-        </button>
-      </div>
-    </section>
-
-    <section id="pantallaRegistro" class="screen">
-      <h2 id="tituloRegistro">Registro</h2>
-
-      <div class="steps">
-        <span class="step active">1</span>
-        <span class="step">2</span>
-        <span class="step">3</span>
-      </div>
-
-      <form id="formRegistro">
-        <input id="nombre" type="text" placeholder="Nombre completo" required>
-        <input id="telefono" type="tel" placeholder="Número de celular" required>
-        <input id="dni" type="text" placeholder="DNI" required>
-
-        <div id="camposRepartidor" class="hidden">
-          <input id="placa" type="text" placeholder="Placa de moto">
-          <input id="soat" type="text" placeholder="Número de SOAT">
-          <input id="licencia" type="text" placeholder="Licencia de conducir">
-        </div>
-
-        <button class="btn primary" type="submit">
-          Continuar a verificación
-        </button>
-      </form>
-    </section>
-
-    <section id="pantallaVerificacion" class="screen">
-      <h2>Verificación</h2>
-
-      <div class="steps">
-        <span class="step done">1</span>
-        <span class="step active">2</span>
-        <span class="step">3</span>
-      </div>
-
-      <div class="verify-box">
-        <p id="textoVerificacion"></p>
-
-        <label class="upload">
-          Foto de DNI
-          <input type="file">
-        </label>
-
-        <label id="uploadMoto" class="upload hidden">
-          Foto de moto / SOAT
-          <input type="file">
-        </label>
-
-        <button onclick="finalizarVerificacion()" class="btn primary">
-          Verificar
-        </button>
-      </div>
-    </section>
-
-    <section id="pantallaListo" class="screen">
-      <h2>Todo listo</h2>
-
-      <div class="steps">
-        <span class="step done">1</span>
-        <span class="step done">2</span>
-        <span class="step active">3</span>
-      </div>
-
-      <p id="mensajeListo"></p>
-
-      <button onclick="entrarPanel()" class="btn primary">
-        Entrar
+    <div class="inicio-actions">
+      <button class="btn verde" onclick="abrirCliente()">
+        <i class="fa-solid fa-user"></i> Soy Cliente
       </button>
-    </section>
 
-    <section id="panelCliente" class="screen">
-      <header class="topbar">
-        <h2>Cliente</h2>
-        <button onclick="cerrarSesion()">Salir</button>
-      </header>
+      <button class="btn borde" onclick="abrirRepartidorDatos()">
+        <i class="fa-solid fa-motorcycle"></i> Soy Repartidor
+      </button>
 
-      <div class="box">
-        <h3>Solicitar envío</h3>
+      <p>¿Ya tienes cuenta? <span>Iniciar sesión</span></p>
+    </div>
 
-        <input id="origen" type="text" placeholder="Punto de recojo">
-        <input id="destino" type="text" placeholder="Destino">
-        <input id="distancia" type="number" placeholder="Distancia en km">
+  </div>
+</section>
 
-        <button onclick="calcularPrecio()" class="btn secondary">
-          Calcular precio
-        </button>
+<!-- CLIENTE PASO 1 -->
+<section id="clienteDatos" class="screen">
+  <div class="phone card">
 
-        <div id="resultadoPrecio" class="price hidden"></div>
+    <div class="top">
+      <button onclick="volverInicio()">←</button>
+      <h2>Registro de Cliente</h2>
+    </div>
 
-        <button onclick="publicarPedido()" class="btn primary">
-          Rutear
-        </button>
+    <div class="steps">
+      <span class="active">1</span><div class="line active"></div>
+      <span>2</span><div class="line"></div>
+      <span>3</span>
+    </div>
+
+    <div class="labels">
+      <b>Datos personales</b><p>Verificación</p><p>¡Listo!</p>
+    </div>
+
+    <div class="intro">
+      <div class="circle"><i class="fa-solid fa-user"></i></div>
+      <div>
+        <h3>Crea tu cuenta en Enruta</h3>
+        <p>Completa tus datos para publicar pedidos.</p>
       </div>
+    </div>
 
-      <div class="box">
-        <h3>Mis pedidos publicados</h3>
-        <div id="listaPedidosCliente"></div>
+    <div class="input-row"><i class="fa-regular fa-user"></i><div><label>Nombres completos</label><input placeholder="Ej. Luis Alberto"></div></div>
+    <div class="input-row"><i class="fa-regular fa-id-card"></i><div><label>DNI</label><input placeholder="Ingresa tu DNI"></div></div>
+    <div class="input-row"><i class="fa-regular fa-envelope"></i><div><label>Correo electrónico</label><input placeholder="ejemplo@correo.com"></div></div>
+    <div class="input-row"><i class="fa-solid fa-phone"></i><div><label>Número de celular</label><input placeholder="912 345 678"></div></div>
+    <div class="input-row"><i class="fa-solid fa-location-dot"></i><div><label>Dirección de referencia</label><input placeholder="Ej. Av. Arequipa 1234"></div></div>
+
+    <div class="safe">
+      <i class="fa-solid fa-shield-halved"></i>
+      <div>
+        <strong>Tu información está protegida</strong>
+        <p>En Enruta cuidamos tus datos.</p>
       </div>
-    </section>
+    </div>
 
-    <section id="panelRepartidor" class="screen">
-      <header class="topbar">
-        <h2>Repartidor</h2>
-        <button onclick="cerrarSesion()">Salir</button>
-      </header>
+    <button class="continue" onclick="abrirClienteVerificacion()">Continuar →</button>
 
-      <div class="box">
-        <h3>Pedidos disponibles</h3>
-        <div id="listaPedidosRepartidor"></div>
+  </div>
+</section>
+
+<!-- CLIENTE PASO 2 -->
+<section id="clienteVerificacion" class="screen">
+  <div class="phone card">
+
+    <div class="top">
+      <button onclick="abrirCliente()">←</button>
+      <h2>Registro de Cliente</h2>
+    </div>
+
+    <div class="steps">
+      <span class="active">1</span><div class="line active"></div>
+      <span class="active">2</span><div class="line"></div>
+      <span>3</span>
+    </div>
+
+    <div class="labels">
+      <b>Datos personales</b><b>Verificación</b><p>¡Listo!</p>
+    </div>
+
+    <div class="intro">
+      <div class="circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
+      <div>
+        <h3>Verifica tu número</h3>
+        <p>Ingresa el código de 6 dígitos enviado a tu celular.</p>
       </div>
+    </div>
 
-      <div class="box">
-        <h3>Mis ganancias</h3>
-        <p id="ganancias">S/ 0.00</p>
+    <div class="codigo-box">
+      <input maxlength="1">
+      <input maxlength="1">
+      <input maxlength="1">
+      <input maxlength="1">
+      <input maxlength="1">
+      <input maxlength="1">
+    </div>
+
+    <p class="reenviar">¿No recibiste el código? <span>Reenviar</span></p>
+
+    <button class="continue" onclick="abrirClienteListo()">Verificar →</button>
+
+  </div>
+</section>
+
+<!-- CLIENTE PASO 3 -->
+<section id="clienteListo" class="screen">
+  <div class="phone card center-content">
+
+    <div class="steps">
+      <span class="active">1</span><div class="line active"></div>
+      <span class="active">2</span><div class="line active"></div>
+      <span class="active">3</span>
+    </div>
+
+    <div class="success-icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+
+    <h2>¡Cuenta creada!</h2>
+    <p class="success-text">Bienvenido a ENRUTA. Ya puedes publicar tu primer pedido.</p>
+
+    <button class="continue" onclick="volverInicio()">Ir al inicio →</button>
+
+  </div>
+</section>
+
+<!-- REPARTIDOR PASO 1 -->
+<section id="repartidorDatos" class="screen">
+  <div class="phone repartidor-bg">
+
+    <div class="top">
+      <button onclick="volverInicio()">←</button>
+      <h2>Registro Repartidor</h2>
+    </div>
+
+    <div class="steps">
+      <span class="active">1</span><div class="line"></div>
+      <span>2</span><div class="line"></div>
+      <span>3</span>
+    </div>
+
+    <div class="labels">
+      <b>Datos personales</b><p>Documentos</p><p>Verificación</p>
+    </div>
+
+    <div class="intro">
+      <div class="circle"><i class="fa-solid fa-motorcycle"></i></div>
+      <div>
+        <h3>Crea tu cuenta de repartidor</h3>
+        <p>Primero completa tus datos personales.</p>
       </div>
-    </section>
+    </div>
 
-  </main>
+    <div class="input-row"><i class="fa-regular fa-user"></i><div><label>Nombres completos</label><input placeholder="Ej. Luis Alberto"></div></div>
+    <div class="input-row"><i class="fa-regular fa-id-card"></i><div><label>DNI</label><input placeholder="Ingresa tu DNI"></div></div>
+    <div class="input-row"><i class="fa-regular fa-envelope"></i><div><label>Correo electrónico</label><input placeholder="ejemplo@correo.com"></div></div>
+    <div class="input-row"><i class="fa-solid fa-phone"></i><div><label>Número de celular</label><input placeholder="912 345 678"></div></div>
+    <div class="input-row"><i class="fa-solid fa-location-dot"></i><div><label>Dirección de referencia</label><input placeholder="Ej. Av. Arequipa 1234"></div></div>
 
-  <script src="enruta.js"></script>
+    <button class="continue" onclick="abrirRepartidorDocs()">Continuar →</button>
+
+  </div>
+</section>
+
+<!-- REPARTIDOR PASO 2 -->
+<section id="repartidorDocs" class="screen">
+  <div class="phone repartidor-bg">
+
+    <div class="top">
+      <button onclick="abrirRepartidorDatos()">←</button>
+      <h2>Registro Repartidor</h2>
+    </div>
+
+    <div class="steps">
+      <span class="active">1</span><div class="line active"></div>
+      <span class="active">2</span><div class="line"></div>
+      <span>3</span>
+    </div>
+
+    <div class="labels">
+      <b>Datos personales</b><b>Documentos</b><p>Verificación</p>
+    </div>
+
+    <div class="intro">
+      <div class="circle"><i class="fa-solid fa-file-shield"></i></div>
+      <div>
+        <h3>Sube tus documentos</h3>
+        <p>Todos son obligatorios para recibir pedidos.</p>
+      </div>
+    </div>
+
+    <div class="doc"><i class="fa-regular fa-id-card"></i><div><strong>DNI</strong><p>Foto o escaneo</p></div><label>Subir<input type="file" hidden></label></div>
+    <div class="doc"><i class="fa-solid fa-id-card"></i><div><strong>Licencia</strong><p>Conducir vigente</p></div><label>Subir<input type="file" hidden></label></div>
+    <div class="doc"><i class="fa-solid fa-motorcycle"></i><div><strong>Foto de moto</strong><p>Foto clara</p></div><label>Subir<input type="file" hidden></label></div>
+    <div class="doc"><i class="fa-solid fa-shield-halved"></i><div><strong>SOAT</strong><p>Vigente</p></div><label>Subir<input type="file" hidden></label></div>
+    <div class="doc"><i class="fa-regular fa-file-lines"></i><div><strong>Tarjeta propiedad</strong><p>Foto o escaneo</p></div><label>Subir<input type="file" hidden></label></div>
+
+    <button class="continue" onclick="abrirRepartidorListo()">Continuar →</button>
+
+  </div>
+</section>
+
+<!-- REPARTIDOR PASO 3 -->
+<section id="repartidorListo" class="screen">
+  <div class="phone card center-content">
+
+    <div class="steps">
+      <span class="active">1</span><div class="line active"></div>
+      <span class="active">2</span><div class="line active"></div>
+      <span class="active">3</span>
+    </div>
+
+    <div class="success-icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+
+    <h2>Documentos enviados</h2>
+    <p class="success-text">Estamos verificando tu información. Pronto podrás recibir pedidos.</p>
+
+    <button class="continue" onclick="volverInicio()">Ir al inicio →</button>
+
+  </div>
+</section>
+
+<script src="enruta.js"></script>
 </body>
 </html>
