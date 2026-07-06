@@ -84,3 +84,30 @@ function publicarPedido() {
 
   alert("Pedido publicado correctamente.");
 }
+function abrirHomeCliente() {
+  ocultar();
+  document.getElementById("homeCliente").classList.add("active");
+}
+
+function calcularPrecio() {
+  const km = parseFloat(document.getElementById("kmPedido").value) || 0;
+  const precio = km * 1.10;
+
+  document.getElementById("precioPedido").textContent = "S/ " + precio.toFixed(2);
+}
+
+function publicarPedido() {
+  const origen = document.getElementById("origenPedido").value.trim();
+  const destino = document.getElementById("destinoPedido").value.trim();
+  const tipo = document.getElementById("tipoPaquete").value.trim();
+  const km = parseFloat(document.getElementById("kmPedido").value) || 0;
+
+  if (!origen || !destino || !tipo || km <= 0) {
+    alert("Completa todos los datos del pedido.");
+    return;
+  }
+
+  const precio = km * 1.10;
+
+  alert("Pedido publicado por S/ " + precio.toFixed(2));
+}
