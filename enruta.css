@@ -56,3 +56,32 @@ label{display:block;font-size:13px;color:#ddd;margin-bottom:6px;font-weight:700}
 .home-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.home-top h2{font-size:25px}.home-top p{color:#b8b8b8;margin-top:5px}.icon-btn{width:44px;height:44px;border-radius:50%;border:none;background:#101820;color:#52e600;font-size:18px;cursor:pointer}
 .price-card{background:linear-gradient(135deg,#101820,#16212b);border:1px solid #26323d;border-radius:18px;padding:22px;text-align:center;margin:22px 0}.price-card p{color:#b8b8b8;font-size:14px}.price-card h1{color:#52e600;font-size:42px;margin:8px 0}.price-card small{color:#9ca3af}
 .mini-title{margin:22px 0 12px;color:#52e600;font-weight:900}.list{display:grid;gap:12px}.empty{color:#9ca3af;text-align:center;padding:18px;background:#101820;border-radius:14px;border:1px solid #1f2933}.order-card{background:#101820;border:1px solid #1f2933;border-radius:16px;padding:15px}.order-card h3{color:#52e600;margin-bottom:8px}.order-card p{color:#c4c4c4;font-size:13px;margin:5px 0}.order-card .money{color:white;font-size:22px;font-weight:900;margin-top:10px}.small-btn{width:100%;height:44px;margin-top:12px;border-radius:12px;border:none;background:#52e600;color:#071008;font-weight:900;cursor:pointer}
+/* FIX: que la app no se estire como página web */
+.screen {
+  display: none !important;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #020509;
+  padding: 20px 12px;
+}
+
+.screen.active {
+  display: flex !important;
+}
+
+.phone {
+  width: 390px !important;
+  max-width: 390px !important;
+  height: 844px !important;
+  max-height: 844px !important;
+  min-height: 844px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  border-radius: 34px;
+  padding: 24px 22px;
+}
+
+.splash-bg {
+  padding: 0 !important;
+}
