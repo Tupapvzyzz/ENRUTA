@@ -27,3 +27,26 @@ function abrirAsignado(name,placa,precio){
 function abrirSeguimiento(){mostrar('seguimiento')}function abrirEntregado(){mostrar('entregado')}
 function abrirDetallePedido(){mostrar('detallePedido')}function abrirEnviarOferta(){mostrar('enviarOferta')}function abrirOfertaEnviada(){mostrar('ofertaEnviada')}
 function abrirPedidoAceptado(){mostrar('pedidoAceptado')}function abrirRecojoConfirmado(){mostrar('recojoConfirmado')}function abrirEntregaFinalizada(){mostrar('entregaFinalizada')}
+function calcularPrecioPorKm(km) {
+  const precio = km * 1.10;
+  return precio.toFixed(2);
+}
+
+function abrirConfirmarPedido() {
+  const recojo = document.getElementById("recojoPedido").value || "Av. Brasil 1450";
+  const entrega = document.getElementById("entregaPedido").value || "Av. Arequipa 850";
+  const descripcion = document.getElementById("descripcionPedido").value || "Paquete pequeño";
+  const peso = document.getElementById("pesoPedido").value || "2 kg";
+
+  const distanciaKm = 4.35;
+  const precio = calcularPrecioPorKm(distanciaKm);
+
+  document.getElementById("resumenRecojo").textContent = recojo;
+  document.getElementById("resumenEntrega").textContent = entrega;
+  document.getElementById("resumenDescripcion").textContent = descripcion;
+  document.getElementById("resumenPeso").textContent = peso;
+  document.getElementById("resumenDistancia").textContent = distanciaKm + " km";
+  document.getElementById("resumenPrecio").textContent = "S/ " + precio;
+
+  mostrar("confirmarPedido");
+}
