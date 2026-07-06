@@ -15,7 +15,7 @@
     <div class="inicio-actions">
       <button class="btn primary" onclick="showScreen('clienteDatos')"><i class="fa-solid fa-user"></i> Soy Cliente</button>
       <button class="btn outline" onclick="showScreen('repartidorDatos')"><i class="fa-solid fa-motorcycle"></i> Soy Repartidor</button>
-      <p class="link-text">¿Ya tienes cuenta? <span onclick="showScreen('homeCliente')">Iniciar sesión</span></p>
+      <p class="link-text">¿Ya tienes cuenta? <span onclick="showScreen('loginTipo')">Iniciar sesión</span></p>
     </div>
   </div>
 </section>
@@ -98,8 +98,24 @@
   </div>
 </section>
 
-<section id="homeCliente" class="screen">
-  <div class="phone card">
+    <section id="loginTipo" class="screen">
+  <div class="phone card center">
+    <h2>Iniciar sesión</h2>
+    <p class="success-text">Elige cómo quieres entrar a ENRUTA.</p>
+
+    <button class="btn primary" onclick="showScreen('homeCliente')">
+      <i class="fa-solid fa-user"></i> Entrar como Cliente
+    </button>
+
+    <button class="btn outline" onclick="showScreen('homeRepartidor')">
+      <i class="fa-solid fa-motorcycle"></i> Entrar como Repartidor
+    </button>
+
+    <button class="continue" onclick="showScreen('inicio')">
+      Volver
+    </button>
+  </div>
+</section>
     <div class="home-top"><div><h2>Hola, cliente 👋</h2><p>¿Qué deseas enviar hoy?</p></div><button class="icon-btn" onclick="showScreen('inicio')"><i class="fa-solid fa-right-from-bracket"></i></button></div>
     <div class="input-row"><i class="fa-solid fa-location-dot"></i><div><label>Punto de recojo</label><input id="origenPedido" placeholder="Ej. Jesús María"></div></div>
     <div class="input-row"><i class="fa-solid fa-flag-checkered"></i><div><label>Punto de entrega</label><input id="destinoPedido" placeholder="Ej. Miraflores"></div></div>
