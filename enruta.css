@@ -386,3 +386,73 @@ input:focus {
   line-height: 1.5;
   margin-bottom: 40px;
 }
+.home-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.home-top h2 {
+  font-size: 25px;
+}
+
+.home-top p {
+  color: #b8b8b8;
+  margin-top: 5px;
+}
+
+.home-top i {
+  font-size: 36px;
+  color: #52e600;
+}
+
+.price-card {
+  background: linear-gradient(135deg, #101820, #16212b);
+  border: 1px solid #26323d;
+  border-radius: 18px;
+  padding: 22px;
+  text-align: center;
+  margin: 22px 0;
+}
+
+.price-card p {
+  color: #b8b8b8;
+  font-size: 14px;
+}
+
+.price-card h1 {
+  color: #52e600;
+  font-size: 42px;
+  margin: 8px 0;
+}
+
+.price-card small {
+  color: #9ca3af;
+}
+
+.pedido-ok {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: #102015;
+  border: 1px solid #52e60066;
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 18px;
+}
+
+.pedido-ok i {
+  color: #52e600;
+  font-size: 26px;
+}
+
+.pedido-ok p {
+  color: #b8b8b8;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.hidden {
+  display: none;
+}
