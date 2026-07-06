@@ -186,3 +186,114 @@ function publicarPedido() {
   alert("Pedido publicado correctamente.");
   renderClientePedidos();
 }
+let pedidoActualId = null;
+
+function tomarPedido(id) {
+  pedidos = pedidos.map(p => {
+    if (p.id === id) {
+      pedidoActualId = id;
+      return { ...p, estado: "Tomado por repartidor" };
+    }
+    return p;
+  });
+
+  localStorage.setItem("pedidosEnruta", JSON.stringify(pedidos));
+  abrirPedidoCurso(id);
+}
+
+function abrirPedidoCurso(id) {
+  pedidoActualId = id;
+
+  const pedido = pedidos.find(p => p.id === id);
+  if (!pedido) {
+    alert("Pedido no encontrado.");
+    return;
+  }
+
+  document.getElementById("cursoEstado").textContent = "Estado: " + pedido.estado;
+
+  document.getElementById("cursoDetalle").innerHTML = `
+    <h3>${pedido.tipo}</h3>
+    <p><strong>Recojo:</strong> ${pedido.origen}</p>
+    <p><strong>Entrega:</strong> ${pedido.destino}</p>
+    <p><strong>Distancia:</strong> ${pedido.km} km</p>
+    <p><strong>Precio:</strong> S/ ${pedido.precio}</p>
+    <p><strong>Comisión ENRUTA:</strong> S/ ${pedido.comision}</p>
+    <p><strong>Gana repartidor:</strong> S/ ${pedido.ganancia}</p>
+  `;
+
+  showScreen("pedidoCurso");
+}
+
+function cambiarEstadoPedido(nuevoEstado) {
+  if (!pedidoActualId) return;
+
+  pedidos = pedidos.map(p => {
+    if (p.id === pedidoActualId) {
+      return { ...p, estado: nuevoEstado };
+    }
+    return p;
+  });
+
+  localStorage.setItem("pedidosEnruta", JSON.stringify(pedidos));
+  abrirPedidoCurso(pedidoActualId);
+}
+
+function finalizarPedido() {
+  if (!pedidoActualId) return;
+
+  pedidos = pedidos.map(p => {
+    if (p.id === pedidoActualId) {
+      return { ...p, estado: "Entregado" };
+    }
+    return p;
+  });
+
+  localStorage.setItem("pedidosEnruta", JSON.stringify(pedidos));
+  alert("Pedido entregado correctamente.");
+  showScreen("homeRepartidor");
+}
+
+function abrirHistorialCliente() {
+  showScreen("historialCliente");
+  const lista = document.getElementById("historialClienteLista");
+
+  const historial = pedidos.filter(p => p.estado === "Entregado");
+
+  if (historial.length === 0) {
+    lista.innerHTML = `<div class="empty">Aún no tienes pedidos entregados.</div>`;
+    return;
+  }
+
+  lista.innerHTML = historial.map(p => `
+    <div class="order-card">
+      <h3>${p.tipo}</h3>
+      <p><strong>Recojo:</strong> ${p.origen}</p>
+      <p><strong>Entrega:</strong> ${p.destino}</p>
+      <p><strong>Total:</strong> S/ ${p.precio}</p>
+      <p><strong>Estado:</strong> ${p.estado}</p>
+    </div>
+  `).join("");
+}
+
+function abrirHistorialRepartidor() {
+  showScreen("historialRepartidor");
+  const lista = document.getElementById("historialRepartidorLista");
+
+  const historial = pedidos.filter(p => p.estado === "Entregado");
+
+  if (historial.length === 0) {
+    lista.innerHTML = `<div class="empty">Aún no tienes entregas finalizadas.</div>`;
+    return;
+  }
+
+  lista.innerHTML = historial.map(p => `
+    <div class="order-card">
+      <h3>${p.tipo}</h3>
+      <p><strong>Distancia:</strong> ${p.km} km</p>
+      <p><strong>Cliente pagó:</strong> S/ ${p.precio}</p>
+      <p><strong>Comisión:</strong> S/ ${p.comision}</p>
+      <p><strong>Tu ganancia:</strong> S/ ${p.ganancia}</p>
+    </div>
+  `).join("");
+}
