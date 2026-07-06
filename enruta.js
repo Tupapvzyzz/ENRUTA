@@ -1,98 +1,56 @@
 function ocultar() {
-  document.querySelectorAll(".screen").forEach(screen => {
-    screen.classList.remove("active");
+  document.querySelectorAll(".screen").forEach(s => {
+    s.classList.remove("active");
   });
 }
 
-function volverInicio() {
+function mostrar(id) {
   ocultar();
-  document.getElementById("inicio").classList.add("active");
-}
+  const pantalla = document.getElementById(id);
 
-function abrirCliente() {
-  ocultar();
-  document.getElementById("clienteDatos").classList.add("active");
-}
-
-function abrirClienteVerificacion() {
-  ocultar();
-  document.getElementById("clienteVerificacion").classList.add("active");
-}
-
-function abrirClienteListo() {
-  ocultar();
-  document.getElementById("clienteListo").classList.add("active");
-}
-
-function abrirRepartidorDatos() {
-  ocultar();
-  document.getElementById("repartidorDatos").classList.add("active");
-}
-
-function abrirRepartidorDocs() {
-  ocultar();
-  document.getElementById("repartidorDocs").classList.add("active");
-}
-
-function abrirRepartidorListo() {
-  ocultar();
-  document.getElementById("repartidorListo").classList.add("active");
-}
-let pedidos = JSON.parse(localStorage.getItem("pedidosEnruta")) || [];
-
-function abrirHomeCliente() {
-  ocultar();
-  document.getElementById("homeCliente").classList.add("active");
-}
-
-function calcularPrecio() {
-  const km = parseFloat(document.getElementById("kmPedido").value) || 0;
-  const precio = km * 1.10;
-
-  document.getElementById("precioPedido").textContent =
-    "S/ " + precio.toFixed(2);
-}
-
-function publicarPedido() {
-  const origen = document.getElementById("origenPedido").value.trim();
-  const destino = document.getElementById("destinoPedido").value.trim();
-  const tipo = document.getElementById("tipoPaquete").value.trim();
-  const km = parseFloat(document.getElementById("kmPedido").value) || 0;
-  const precio = km * 1.10;
-
-  if (!origen || !destino || !tipo || km <= 0) {
-    alert("Completa todos los datos del pedido.");
+  if (!pantalla) {
+    alert("ERROR: No existe la pantalla con id: " + id);
     return;
   }
 
-  const pedido = {
-    id: Date.now(),
-    origen,
-    destino,
-    tipo,
-    km,
-    precio: precio.toFixed(2),
-    comision: (precio * 0.09).toFixed(2),
-    repartidorRecibe: (precio * 0.91).toFixed(2),
-    estado: "publicado"
-  };
-
-  pedidos.unshift(pedido);
-  localStorage.setItem("pedidosEnruta", JSON.stringify(pedidos));
-
-  document.getElementById("pedidoPublicado").classList.remove("hidden");
-
-  alert("Pedido publicado correctamente.");
+  pantalla.classList.add("active");
 }
+
+function volverInicio() {
+  mostrar("inicio");
+}
+
+function abrirCliente() {
+  mostrar("clienteDatos");
+}
+
+function abrirClienteVerificacion() {
+  mostrar("clienteVerificacion");
+}
+
+function abrirClienteListo() {
+  mostrar("clienteListo");
+}
+
 function abrirHomeCliente() {
-  ocultar();
-  document.getElementById("homeCliente").classList.add("active");
+  mostrar("homeCliente");
+}
+
+function abrirRepartidorDatos() {
+  mostrar("repartidorDatos");
+}
+
+function abrirRepartidorDocs() {
+  mostrar("repartidorDocs");
+}
+
+function abrirRepartidorListo() {
+  mostrar("repartidorListo");
 }
 
 function calcularPrecio() {
   const km = parseFloat(document.getElementById("kmPedido").value) || 0;
   const precio = km * 1.10;
-
   document.getElementById("precioPedido").textContent = "S/ " + precio.toFixed(2);
 }
 
@@ -108,6 +66,5 @@ function publicarPedido() {
   }
 
   const precio = km * 1.10;
-
   alert("Pedido publicado por S/ " + precio.toFixed(2));
 }
