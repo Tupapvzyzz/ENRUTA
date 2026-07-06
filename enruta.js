@@ -66,12 +66,30 @@ function renderRepartidorPedidos(){
   box.innerHTML=disponibles.map(p=>`<div class="order-card"><h3>${p.tipo}</h3><p><strong>Recojo:</strong> ${p.origen}</p><p><strong>Entrega:</strong> ${p.destino}</p><p><strong>Distancia:</strong> ${p.km} km</p><p><strong>Comisión ENRUTA:</strong> S/ ${p.comision}</p><p><strong>Ganancia repartidor:</strong> S/ ${p.ganancia}</p><div class="money">S/ ${p.precio}</div><button class="small-btn" onclick="tomarPedido(${p.id})">Tomar pedido</button></div>`).join('');
 }
 
+let pedidoActual = null;
+
 function tomarPedido(id){
-  pedidos=pedidos.map(p=>p.id===id?{...p,estado:'Tomado por repartidor'}:p);
-  localStorage.setItem('pedidosEnruta',JSON.stringify(pedidos));
-  alert('Pedido tomado correctamente.');
-  renderRepartidorPedidos();
+
+    pedidoActual = id;
+
+    pedidos = pedidos.map(p=>{
+
+        if(p.id===id){
+
+            p.estado="Tomado por repartidor";
+
+        }
+
+        return p;
+
+    });
+
+    localStorage.setItem("pedidosEnruta",JSON.stringify(pedidos));
+
+    abrirPedidoCurso();
+
 }
+
 let map;
 let directionsService;
 let directionsRenderer;
