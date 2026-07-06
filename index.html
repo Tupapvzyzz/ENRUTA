@@ -132,61 +132,75 @@
   </div>
 </section>
 <!-- CLIENTE PASO 1 -->
-<section id="registroCliente" class="screen">
-  <div class="phone form-bg cliente-bg">
+  <section id="registroClienteVerificacion" class="screen">
 
-    <div class="top">
-      <button onclick="volverInicio()">←</button>
-      <h2>Registro Cliente</h2>
+    <div class="phone card">
+
+        <div class="top">
+            <button onclick="abrirCliente()">←</button>
+            <h2>Registro de Cliente</h2>
+        </div>
+
+        <div class="steps">
+            <span class="active">1</span>
+            <div class="line active"></div>
+
+            <span class="active">2</span>
+            <div class="line"></div>
+
+            <span>3</span>
+        </div>
+
+        <div class="labels">
+            <b>Datos personales</b>
+            <b>Verificación</b>
+            <p>¡Listo!</p>
+        </div>
+
+        <div class="intro">
+
+            <div class="circle">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+
+            <div>
+                <h3>Verifica tu número</h3>
+                <p>
+                    Hemos enviado un código de 6 dígitos a tu celular.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="codigo-box">
+
+            <input maxlength="1">
+            <input maxlength="1">
+            <input maxlength="1">
+            <input maxlength="1">
+            <input maxlength="1">
+            <input maxlength="1">
+
+        </div>
+
+        <p class="reenviar">
+            ¿No recibiste el código?
+            <span>Reenviar</span>
+        </p>
+
+        <button
+            class="continue"
+            onclick="abrirClienteListo()">
+
+            Verificar →
+
+        </button>
+
     </div>
 
-    <div class="steps">
-      <span class="active">1</span><div class="line"></div>
-      <span>2</span><div class="line"></div>
-      <span>3</span>
-    </div>
-
-    <div class="labels">
-      <b>Datos</b><p>Verificación</p><p>Listo</p>
-    </div>
-
-    <div class="intro">
-      <div class="circle"><i class="fa-solid fa-user"></i></div>
-      <div>
-        <h3>Crea tu cuenta</h3>
-        <p>Completa tus datos para publicar pedidos.</p>
-      </div>
-    </div>
-
-    <div class="input-row">
-      <i class="fa-regular fa-user"></i>
-      <div><label>Nombres completos</label><input placeholder="Ej. Luis Alberto" /></div>
-    </div>
-
-    <div class="input-row">
-      <i class="fa-regular fa-id-card"></i>
-      <div><label>DNI</label><input placeholder="Ingresa tu DNI" /></div>
-    </div>
-
-    <div class="input-row">
-      <i class="fa-regular fa-envelope"></i>
-      <div><label>Correo electrónico</label><input placeholder="ejemplo@correo.com" /></div>
-    </div>
-
-    <div class="input-row">
-      <i class="fa-solid fa-phone"></i>
-      <div><label>Celular</label><input placeholder="912 345 678" /></div>
-    </div>
-
-    <div class="input-row">
-      <i class="fa-solid fa-location-dot"></i>
-      <div><label>Dirección</label><input placeholder="Ej. Av. Arequipa 1234" /></div>
-    </div>
-
-    <button class="continue" onclick="abrirClienteVerificacion()">Continuar →</button>
-  </div>
 </section>
 
+  
 <!-- CLIENTE PASO 2 -->
 <section id="registroClienteVerificacion" class="screen">
   <div class="phone form-bg cliente-bg">
